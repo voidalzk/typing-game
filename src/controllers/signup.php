@@ -44,6 +44,7 @@ session_start();
 			Username: <input id="text" type="text" name="username"><br><br>
 			E-mail:   <input id="text" type="text" name="email"><br><br>
 			Password: <input id="text" type="password" name="password"><br><br>
+			Confirm Password: <input id="text" type="password" name="c_password"><br><br>
 			
 			<input id="button" type="submit" value="Cadastrar"><br><br>
 
