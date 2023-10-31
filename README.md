@@ -14,8 +14,8 @@
 
 ### Tecnologias Utilizadas
 
-- **HTML5, CSS3 e JavaScript:** Responsáveis pela estrutura, estilo e funcionalidades das páginas.
-- **Validação de Campos:** Utilização do JavaScript para validar os formulários antes de serem enviados para o back-end.
+- **HTML5, CSS3, PHP e JavaScript:** Responsáveis pela estrutura, estilo e funcionalidades das páginas.
+- **Validação de Campos:** Utilização do Javascript para validar os formulários antes de serem enviados para o back-end.
 - **Interação com Back-end:** Uso de AJAX ou Fetch API para comunicação com o back-end.
 
 ## Back-end
@@ -23,7 +23,7 @@
 ### Tecnologias Utilizadas
 
 - **PHP:** Utilizado para processar e armazenar dados no banco de dados.
-- **Banco de Dados:** MySQL, PostgreSQL, etc., utilizados para armazenar informações dos usuários, partidas e pontuações.
+- **Banco de Dados:** MongoDB, banco de dados Cloud.
 - **Sistema de Autenticação:** Implementação de um sistema de registro e login com hashing de senhas.
 
 ### Estrutura
