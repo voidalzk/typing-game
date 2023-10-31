@@ -36,31 +36,35 @@
 
 ### Estrutura de Diretórios
 
-root
-│
-├── scss
-│
-├── /css
-│ └── style.css
-│
-├── /js
-│ └── script.js
-│
-├── /inc
-│ ├── config.php
-│ └── functions.php
-│
-├── /auth
-│ └── auth.php
-│
-├── /game
-│ └── game_logic.js
-│
-└── /backend
-├── database.php
-├── user_actions.php
-├── game_actions.php
-└── league_actions.php
+- index.php (Página inicial)
+- login.php (Página de Login)
+- registro.php (Página de Registro)
+- jogo.php (Página do Jogo)
+- historico.php (Página do Histórico de Partidas)
+- ligas.php (Página de Ligas)
+- quadros.php (Página de Quadros de Pontuação)
+
+/css
+  - style.css (Arquivo CSS)
+
+/js
+  - script.js (Arquivo JavaScript para funcionalidades do front-end)
+
+/inc
+  - config.php (Arquivo de configuração do banco de dados)
+  - functions.php (Funções PHP úteis)
+
+/auth
+  - auth.php (Lógica de autenticação e autorização)
+  
+/game
+  - game_logic.js (Lógica do Jogo em JavaScript)
+
+/backend
+  - database.php (Conexão com o banco de dados)
+  - user_actions.php (Operações de usuários: registro, login)
+  - game_actions.php (Operações do jogo: pontuação, histórico)
+  - league_actions.php (Operações de ligas)
 
 
 ### Explicação da Estrutura
