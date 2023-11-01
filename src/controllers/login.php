@@ -11,7 +11,7 @@ session_start();
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 
-		if(!empty($username) && !empty($password) && !is_numeric($username))
+		if(!empty($username) && !empty($password))
 		{
 
 			$query = "select * from users where user_name = '$username' limit 1";

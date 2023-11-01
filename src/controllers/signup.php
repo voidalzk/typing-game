@@ -12,15 +12,14 @@ session_start();
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 
-		if(!empty($user_name) && !empty($password) && !empty($email) && !is_numeric($username))
+		if(!empty($username) && !empty($email) && !empty($c_email) && !empty($password) && !empty($c_password))
 		{
-
 			$user_id = random_num(20);
-			$query = "insert into users (user_id,username,email,password) values ('$user_id','$username','$email','$password')";
+			$query = "insert into users (user_id,username,email,password) values ('$user_id','$username','$email','$c_email','$password','$c_password')";
 
 			mysqli_query($con, $query);
 
-			header("Location: login.php");
+			header("Location: src/controllers/login.php");
 			die;
 		}else
 		{
@@ -39,9 +38,12 @@ session_start();
 
 	<div id="box">
 		
+
+	<?php if($err): ?>
+		Erro no cadastro.
+	<?php endif; ?>
 		<form method="post">
 			<div>Cadastrar</div>
-
 			Username: <input id="text" type="text" name="username"><br><br>
 			E-mail:   <input id="text" type="text" name="email"><br><br>
 			Confirm E-mail:<input id="text" type="text" name="c_email"><br><br>
