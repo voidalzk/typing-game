@@ -10,7 +10,9 @@ session_start();
 	{
 		$username = $_POST['username'];
 		$email = $_POST['email'];
+		$c_email = $_POST['c_email']
 		$password = $_POST['password'];
+		$c_password = $_POST['c_password'];
 
 		if(!empty($username) && !empty($email) && !empty($c_email) && !empty($password) && !empty($c_password))
 		{
