@@ -8,5 +8,5 @@ if(isset($_SESSION['user_id']))
 
 }
 
-header("Location: src/controllers/login.php");
+header("Location: login.php");
 die;

@@ -2,8 +2,8 @@
 
 session_start();
 
-	include("src/inc/connection.php");
-	include("src/inc/functions.php");
+	include("connection.php");
+	include("functions.php");
 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -14,7 +14,7 @@ session_start();
 		if(!empty($username) && !empty($password))
 		{
 
-			$query = "select * from users where user_name = '$username' limit 1";
+			$query = "select * from users where username = '$username' limit 1";
 			$result = mysqli_query($con, $query);
 
 			if($result)
@@ -59,7 +59,7 @@ session_start();
 
 			<input id="button" type="submit" value="Logar"><br><br>
 
-			<a href="src/controllers/signup.php">Clique para se Cadastrar</a><br><br>
+			<a href="signup.php">Clique para se Cadastrar</a><br><br>
 		</form>
 	</div>
 </body>
