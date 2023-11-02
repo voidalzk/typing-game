@@ -45,27 +45,26 @@ session_start();
 			<div>Cadastrar</div>
 			Username: <input id="text" type="text" name="username"><br>
 			<?php if (!empty($err_username)): ?>
-              <?php echo $err_username ?><br><br>
+              <?php echo $err_username ?><br>
             <?php endIf; ?>
 
 			E-mail:   <input id="text" type="text" name="email"><br>
 			<?php if (!empty($err_email)): ?>
-              <?php echo $err_email ?><br><br>
-            <?php endIf; ?>
+              <?php echo $err_email ?><br>
 
 			Confirm E-mail:<input id="text" type="text" name="c_email"><br>
 			<?php if (!empty($err_c_email)): ?>
-              <?php echo $err_c_email ?><br><br>
+              <?php echo $err_c_email ?><br>
             <?php endIf; ?>
 
 			Password: <input id="text" type="password" name="password"><br>
 			<?php if (!empty($err_password)): ?>
-              <?php echo $err_password ?><br><br>
+              <?php echo $err_password ?><br>
             <?php endIf; ?>
 
 			Confirm Password: <input id="text" type="password" name="c_password"><br>
 			<?php if (!empty($err_c_password)): ?>
-              <?php echo $err_c_password ?><br><br>
+              <?php echo $err_c_password ?><br>
             <?php endIf; ?>
 			
 			<input id="button" type="submit" value="Cadastrar"><br><br>
