@@ -56,7 +56,7 @@ function verify_txt($txt){
       }
 
       //verifica c_password
-      if(empty($_POST["senha"])){
+      if(empty($_POST["c_password"])){
         $err_c_password = "Confirmação de senha é obrigatória.";
         $err = true;
       }

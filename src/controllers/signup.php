@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-	//include("backend/auth/auth.php");
+	include("auth.php");
 	include("connection.php");
 	include("functions.php");
 
@@ -14,7 +14,7 @@ session_start();
 		$password = $_POST['password'];
 		$c_password = $_POST['c_password'];
 
-		if(!empty($username) && !empty($email) && !empty($password))
+		if(!$err)
 		{
 			$user_id = random_num(20);
 			$query = "insert into users (user_id,username,email,password) values ('$user_id','$username','$email','$password')";
@@ -43,11 +43,30 @@ session_start();
 
 		<form method="post">
 			<div>Cadastrar</div>
-			Username: <input id="text" type="text" name="username"><br><br>
-			E-mail:   <input id="text" type="text" name="email"><br><br>
-			Confirm E-mail:<input id="text" type="text" name="c_email"><br><br>
-			Password: <input id="text" type="password" name="password"><br><br>
-			Confirm Password: <input id="text" type="password" name="c_password"><br><br>
+			Username: <input id="text" type="text" name="username"><br>
+			<?php if (!empty($err_username)): ?>
+              <?php echo $err_username ?><br><br>
+            <?php endIf; ?>
+
+			E-mail:   <input id="text" type="text" name="email"><br>
+			<?php if (!empty($err_email)): ?>
+              <?php echo $err_email ?><br><br>
+            <?php endIf; ?>
+
+			Confirm E-mail:<input id="text" type="text" name="c_email"><br>
+			<?php if (!empty($err_c_email)): ?>
+              <?php echo $err_c_email ?><br><br>
+            <?php endIf; ?>
+
+			Password: <input id="text" type="password" name="password"><br>
+			<?php if (!empty($err_password)): ?>
+              <?php echo $err_password ?><br><br>
+            <?php endIf; ?>
+
+			Confirm Password: <input id="text" type="password" name="c_password"><br>
+			<?php if (!empty($err_c_password)): ?>
+              <?php echo $err_c_password ?><br><br>
+            <?php endIf; ?>
 			
 			<input id="button" type="submit" value="Cadastrar"><br><br>
 
