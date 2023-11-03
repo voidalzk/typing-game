@@ -1,5 +1,3 @@
-
-
 <?php
 require 'connectiontest.php';
 
@@ -21,7 +19,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM tb_user WHERE id =
         <?php
         $id = $user["id"];
         $name = $user["name"];
-        $image = $user["image"];
+        $image = $user["img"];
         ?>
         <img src="img/<?php echo $image; ?>" width = 125 height = 125 title="<?php echo $image; ?>">
         <div class="round">
@@ -55,7 +53,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM tb_user WHERE id =
         "
         <script>
           alert('Invalid Image Extension');
-          document.location.href = '../updateimageprofile';
+          document.location.href = '../typing-game';
         </script>
         ";
       }
@@ -64,7 +62,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM tb_user WHERE id =
         "
         <script>
           alert('Image Size Is Too Large');
-          document.location.href = '../updateimageprofile';
+          document.location.href = '../typing-game';
         </script>
         ";
       }
@@ -77,7 +75,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM tb_user WHERE id =
         echo
         "
         <script>
-        document.location.href = '../updateimageprofile';
+        document.location.href = '../typing-game';
         </script>
         ";
       }

@@ -1,9 +1,9 @@
 <?php 
 session_start();
 
-	include("inc/uth.php");
-	include("inc/connection.php");
-	include("inc/functions.php");
+	include("../inc/auth.php");
+	include("../inc/connection.php");
+	include("../inc/functions.php");
 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")

@@ -1,2 +1,3 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "profile");
+$conn = mysqli_connect("localhost", "root", "", "localhost");
+?>
