@@ -2,8 +2,8 @@
 
 session_start();
 
-	include("inc/connection.php");
-	include("inc/functions.php");
+	include("../inc/connection.php");
+	include("../inc/functions.php");
 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
