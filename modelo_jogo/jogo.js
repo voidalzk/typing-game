@@ -2,34 +2,44 @@ const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random';
 const quoteDisplayElement = document.getElementById('quoteDisplay');
 const quoteInputElement = document.getElementById('quoteInput');
 const timerElement = document.getElementById('timer');
+const containergame = document.getElementById('containerJogo');
+const button = document.getElementById('button');
+const divButton = document.getElementById('divButton');
 let seconds = 0;
 let timerInterval;
-let points = 0;
+let quotepoints = 0;
+let letterspoints = 0
+let isGameStarted = false;
+
+button.addEventListener('click', () => {
+  divButton.innerHTML = '';
+  if (!isGameStarted) {
+    startGame();
+  }
+});
 
 quoteInputElement.addEventListener('input', () => {
   const arrayQuote = quoteDisplayElement.querySelectorAll('span');
   const arrayValue = quoteInputElement.value.split('');
 
-  let correct = true;
   arrayQuote.forEach((characterSpan, index) => {
     const character = arrayValue[index];
     if (character == null) {
       characterSpan.classList.remove('correct');
       characterSpan.classList.remove('incorrect');
-      correct = false;
     } else if (character === characterSpan.innerText) {
       characterSpan.classList.add('correct');
       characterSpan.classList.remove('incorrect');
-      points++;
     } else {
       characterSpan.classList.remove('correct');
       characterSpan.classList.add('incorrect');
-      correct = false;
-      points--;
     }
   });
 
-  if (correct) {
+  const isComplete = arrayValue.length === arrayQuote.length;
+  if (isComplete) {
+    letterspoints = letterspoints + arrayValue.length;
+    quotepoints++;
     renderNewQuote();
   }
 });
@@ -48,24 +58,36 @@ async function renderNewQuote() {
     characterSpan.innerText = character;
     quoteDisplayElement.appendChild(characterSpan);
   });
-  quoteInputElement.value = null;
-  startTimer();
+  quoteInputElement.value = '';
 }
 
 let startTime;
-function startTimer() {
+
+function startGame() {
+  isGameStarted = true;
+  points = 0;
   seconds = 0;
-  timerElement.innerText = 0;
+  renderNewQuote();
+  startTimer();
+}
+
+function startTimer() {
+  timerElement.innerText = seconds;
   startTime = new Date();
   clearInterval(timerInterval);
   timerInterval = setInterval(() => {
     timer.innerText = getTimerTime();
-    if (seconds === 50) {
-      timerElement.style.color = 'red';
+    if (seconds >= 50) {
+      if (seconds % 2 === 0) {
+        timerElement.style.color = 'red';
+      } else {
+        timerElement.style.color = 'white';
+      }
     }
     if (seconds === 60) {
       clearInterval(timerInterval);
-      console.log(points); //rever como fazer pontuacao
+      timerElement.innerText = '';
+      containergame.innerHTML = `acabou ${quotepoints} frases completas e ${letterspoints} letras feitas`;
     }
   }, 1000);
 }
@@ -74,5 +96,3 @@ function getTimerTime() {
   seconds++;
   return Math.floor((new Date() - startTime) / 1000);
 }
-
-renderNewQuote();
