@@ -44,28 +44,35 @@ session_start();
 		<form method="post">
 			<div>Cadastrar</div>
 			Username: <input id="text" type="text" name="username"><br>
-			<?php if (!empty($err_username)): ?>
-              <?php echo $err_username ?><br>
-            <?php endIf; ?>
+			<?php 
+				if (!empty($err_username)): 
+             		 echo $err_username . "<br>"
+				?>
 
 			E-mail:   <input id="text" type="text" name="email"><br>
-			<?php if (!empty($err_email)): ?>
-              <?php echo $err_email ?><br>
+			<?php 
+				if (!empty($err_email)): 
+ 					 echo $err_email . "<br>"
+					 ?>
 
 			Confirm E-mail:<input id="text" type="text" name="c_email"><br>
-			<?php if (!empty($err_c_email)): ?>
-              <?php echo $err_c_email ?><br>
-            <?php endIf; ?>
+			<?php
+				 if (!empty($err_c_email)):
+ 					echo $err_c_email . "<br>"
+ 					?>
 
 			Password: <input id="text" type="password" name="password"><br>
-			<?php if (!empty($err_password)): ?>
-              <?php echo $err_password ?><br>
-            <?php endIf; ?>
+			<?php 
+				if (!empty($err_password)):
+					echo $err_password . "<br>"
+					?>
 
 			Confirm Password: <input id="text" type="password" name="c_password"><br>
-			<?php if (!empty($err_c_password)): ?>
-              <?php echo $err_c_password ?><br>
-            <?php endIf; ?>
+			<?php
+				if (!empty($err_c_password)) {
+ 				   echo $err_c_password . "<br>";
+					}
+				?>
 			
 			<input id="button" type="submit" value="Cadastrar"><br><br>
 
