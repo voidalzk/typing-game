@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-	include("src/controllers/connection.php");
-	include("src/controllers/functions.php");
+	include("src/inc/connection.php");
+	include("src/inc/functions.php");
 
 	$user_data = check_login($con);
 
@@ -15,7 +15,7 @@ session_start();
 </head>
 <body>
 
-	<a href="logout.php">Logout</a>
+	<a href="src/views/logout.php">Logout</a>
 	<h1>Pagina principal</h1>
 
 	<br>
