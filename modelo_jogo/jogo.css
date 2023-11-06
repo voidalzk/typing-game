@@ -22,6 +22,7 @@ body,
 }
 
 .containerJogo {
+  display: none;
   background-color: #41403b;
   padding: 1rem;
   border-radius: .5rem;

@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    min-height: 95vh;
+    max-height: 95vh;
+    margin: 0;
+    background-color: #3a3a41;
+}
+
+body,
+.quote-input {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.menu {
+    position: fixed;
+    width: 100%;
+}
+
+#divButtons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.containerJogo {
+    display: none;
+    background-color: #41403b;
+    padding: 1rem;
+    border-radius: .5rem;
+    width: 700px;
+    max-width: 90%;
+    position: absolute;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #3a3a41;
+}
+
+
+#button {
+    background-color: yellow;
+}
+
+.timer {
+    text-align: center;
+    position: absolute;
+    top: 5rem;
+    font-size: 5rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.quote-display {
+    margin-bottom: 1rem;
+    margin-left: calc(1rem + 2px);
+    margin-right: calc(1rem + 2px);
+    color: #ffffff;
+    font-size: 2rem;
+}
+
+.quote-input {
+    background-color: transparent;
+    border: 2px solid #111114;
+    outline: none;
+    width: 100%;
+    height: 8rem;
+    margin: auto;
+    resize: none;
+    padding: .5rem 1rem;
+    font-size: 2rem;
+    border-radius: .5rem;
+}
+
+span {
+    margin: 1px;
+    border-radius: 2px;
+    font-size: 25px;
+    font-family: Lintel;
+}
+
+.quote-input:focus {
+    border-color: rgb(255, 247, 247);
+}
+
+.correct {
+    color: green;
+    background-color: rgba(144, 238, 144, 0.836);
+}
+
+.incorrect {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.205);
+}

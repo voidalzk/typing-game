@@ -1,18 +1,21 @@
 const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random';
-const quoteDisplayElement = document.getElementById('quoteDisplay');
-const quoteInputElement = document.getElementById('quoteInput');
 const timerElement = document.getElementById('timer');
-const containergame = document.getElementById('containerJogo');
+const containergame = document.querySelector('.containerJogo');
 const button = document.getElementById('button');
 const divButton = document.getElementById('divButton');
+const game = document.getElementById('game')
 let seconds = 0;
 let timerInterval;
 let quotepoints = 0;
 let letterspoints = 0
 let isGameStarted = false;
+const quoteDisplayElement = document.getElementById('quoteDisplay');
+const quoteInputElement = document.getElementById('quoteInput');
+
 
 button.addEventListener('click', () => {
   divButton.innerHTML = '';
+  containergame.style.display = "block";
   if (!isGameStarted) {
     startGame();
   }
@@ -21,6 +24,7 @@ button.addEventListener('click', () => {
 quoteInputElement.addEventListener('input', () => {
   const arrayQuote = quoteDisplayElement.querySelectorAll('span');
   const arrayValue = quoteInputElement.value.split('');
+
 
   arrayQuote.forEach((characterSpan, index) => {
     const character = arrayValue[index];
@@ -65,7 +69,6 @@ let startTime;
 
 function startGame() {
   isGameStarted = true;
-  points = 0;
   seconds = 0;
   renderNewQuote();
   startTimer();
