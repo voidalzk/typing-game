@@ -35,15 +35,25 @@
   <main>
     <div class="button" id="divButton">
       <button type="button" class="btn btn-warning btn-lg" style="font-size: 50px;" id="button">JOGAR</button>
-
-      <P id="texto">
-        Faça seus dedos voarem pelo teclado com o jogo de digitação e em 60 segundos descubra quem é o mais rapido </P>
-
+      <P id="texto">Faça seus dedos voarem pelo teclado com o jogo de digitação e em 60 segundos descubra quem é o mais
+        rapido </P>
     </div>
     <div class="timer" id="timer"></div>
     <div class="containerJogo">
       <div class="quote-display" id="quoteDisplay"></div>
       <textarea id="quoteInput" class="quote-input" autofocus></textarea>
+    </div>
+    <div class="result" id="divResults">
+      <div class="titleResult">
+        <div class="pointsResult" id="pointsResult">
+          <h3>Pontos da partida:</h3>
+          <h4 id="matchResult"></h4>
+          <h3>Maior resultado:</h3>
+          <h3 id="highScore"></h3>
+          <button id="ButtonRestart" type="button" class="btn btn-warning btn-lg" style="font-size: 50px;"> Jogar
+            novamente</button>
+        </div>
+      </div>
     </div>
   </main>
   <script src="jogo.js" defer></script>

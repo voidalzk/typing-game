@@ -3,11 +3,13 @@ const timerElement = document.getElementById('timer');
 const containergame = document.querySelector('.containerJogo');
 const button = document.getElementById('buttonStart');
 const divButtons = document.getElementById('divButtons');
-const game = document.getElementById('game')
+const game = document.getElementById('game');
+
 let seconds = 0;
 let timerInterval;
 let quotepoints = 0;
 let letterspoints = 0
+let quoteactual = 0
 let isGameStarted = false;
 const quoteDisplayElement = document.getElementById('quoteDisplay');
 const quoteInputElement = document.getElementById('quoteInput');
@@ -41,6 +43,8 @@ quoteInputElement.addEventListener('input', () => {
     });
 
     const isComplete = arrayValue.length === arrayQuote.length;
+    
+    quoteactual = arrayValue.length;
     if (isComplete) {
         letterspoints = letterspoints + arrayValue.length;
         quotepoints++;
@@ -90,6 +94,7 @@ function startTimer() {
         if (seconds === 60) {
             clearInterval(timerInterval);
             timerElement.innerText = '';
+            letterspoints = letterspoints + quoteactual
             containergame.innerHTML = `acabou ${quotepoints} frases completas e ${letterspoints} letras feitas`;
         }
     }, 1000);

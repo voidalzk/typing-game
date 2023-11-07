@@ -3,12 +3,18 @@ const timerElement = document.getElementById('timer');
 const containergame = document.querySelector('.containerJogo');
 const button = document.getElementById('button');
 const divButton = document.getElementById('divButton');
-const game = document.getElementById('game')
+const game = document.getElementById('game');
+const PgameResult = document.getElementById('matchResult');
+const PhighScore = document.getElementById('highScore');
+const DivResults = document.getElementById('divResults');
+const ButtonRestart = document.getElementById('ButtonRestart')
 let seconds = 0;
 let timerInterval;
 let quotepoints = 0;
 let letterspoints = 0
 let isGameStarted = false;
+let quoteactual = 0;
+let highScore = 0
 const quoteDisplayElement = document.getElementById('quoteDisplay');
 const quoteInputElement = document.getElementById('quoteInput');
 
@@ -16,6 +22,15 @@ const quoteInputElement = document.getElementById('quoteInput');
 button.addEventListener('click', () => {
   divButton.innerHTML = '';
   containergame.style.display = "block";
+  DivResults.style.display = "none";
+  if (!isGameStarted) {
+    startGame();
+  }
+});
+ButtonRestart.addEventListener('click', () => {
+  divButton.innerHTML = '';
+  containergame.style.display = "block";
+  DivResults.style.display = "none";
   if (!isGameStarted) {
     startGame();
   }
@@ -41,6 +56,7 @@ quoteInputElement.addEventListener('input', () => {
   });
 
   const isComplete = arrayValue.length === arrayQuote.length;
+  quoteactual = arrayValue.length;
   if (isComplete) {
     letterspoints = letterspoints + arrayValue.length;
     quotepoints++;
@@ -89,8 +105,18 @@ function startTimer() {
     }
     if (seconds === 60) {
       clearInterval(timerInterval);
+      containergame.style.display = 'none';
       timerElement.innerText = '';
-      containergame.innerHTML = `acabou ${quotepoints} frases completas e ${letterspoints} letras feitas`;
+      quoteDisplayElement.innerHTML = '';
+      letterspoints = letterspoints + quoteactual
+      if (letterspoints > highScore) {
+        highScore = letterspoints;
+      }
+      DivResults.style.display = "block";
+      PgameResult.innerHTML = `${letterspoints}`;
+      PhighScore.innerHTML = `${highScore}`;
+      isGameStarted = false;
+      letterspoints = 0;
     }
   }, 1000);
 }
