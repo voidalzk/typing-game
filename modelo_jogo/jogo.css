@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: Lintel;
 }
 
 body {
@@ -22,12 +23,17 @@ body,
 }
 
 .containerJogo {
+
+  text-align: center;
   display: none;
   background-color: #41403b;
   padding: 1rem;
   border-radius: .5rem;
   width: 700px;
   max-width: 90%;
+  font-size: 25px;
+  font-family: Lintel;
+  color: white
 }
 
 main {
@@ -46,7 +52,7 @@ main {
 }
 
 #button {
-  background-color: yellow;
+  background-color: #ffc107;
 }
 
 .timer {
@@ -98,4 +104,42 @@ span {
 .incorrect {
   color: red;
   background-color: rgba(255, 0, 0, 0.205);
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+#texto {
+
+  margin-top: 45px;
+  border-radius: 2px;
+  font-size: 25px;
+  font-family: Lintel;
+  color: white
+}
+
+#divButton {
+  text-align: center;
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
