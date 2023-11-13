@@ -17,7 +17,7 @@ let quoteactual = 0;
 let highScore = 0
 const quoteDisplayElement = document.getElementById('quoteDisplay');
 const quoteInputElement = document.getElementById('quoteInput');
-let aux2 = true
+
 
 
 button.addEventListener('click', () => {
@@ -85,7 +85,7 @@ async function renderNewQuote() {
 let startTime;
 
 function startGame() {
-  aux2 = true
+
   isGameStarted = true;
   seconds = 0;
   renderNewQuote();
@@ -97,16 +97,19 @@ function startTimer() {
   startTime = new Date();
   clearInterval(timerInterval);
   timerInterval = setInterval(() => {
+
     timer.innerText = getTimerTime();
 
-    if ((seconds >= 5) && (aux2 = true)) {
+    timerElement.style.color = 'white';
+
+    if (seconds >= 50) {
       if (seconds % 2 === 0) {
         timerElement.style.color = 'red';
       } else {
         timerElement.style.color = 'white';
       }
     }
-    if (seconds === 10) {
+    if (seconds === 60) {
       clearInterval(timerInterval);
       containergame.style.display = 'none';
       timerElement.innerText = '';
@@ -120,7 +123,7 @@ function startTimer() {
       PhighScore.innerHTML = `${highScore}`;
       isGameStarted = false;
       letterspoints = 0;
-      aux2 = false
+
     }
   }, 1000);
 }
