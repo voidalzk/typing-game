@@ -33,12 +33,17 @@
   </header>
 
   <main>
-    <div class="button" id="divButton">
-      <button type="button" class="btn btn-warning btn-lg" style="font-size: 50px;" id="button">JOGAR</button>
-      <P id="texto">Faça seus dedos voarem pelo teclado com o jogo de digitação e em 60 segundos descubra quem é o mais
-        rapido </P>
+    <div id="content">
+      <div class="button" id="divButton">
+        <button type="button" class="btn btn-warning btn-lg" style="font-size: 50px;" id="button">JOGAR</button>
+        <P id="texto">Faça seus dedos voarem pelo teclado com o jogo de digitação e em 60 segundos descubra quem é o
+          mais
+          rapido </P>
+      </div>
     </div>
-    <div class="timer" id="timer"></div>
+    <div id="timer_structure">
+      <div class="timer" id="timer"></div>
+    </div>
     <div class="containerJogo">
       <div class="quote-display" id="quoteDisplay"></div>
       <textarea id="quoteInput" class="quote-input" autofocus></textarea>
@@ -49,9 +54,10 @@
           <h3>Pontos da partida:</h3>
           <h4 id="matchResult"></h4>
           <h3>Maior resultado:</h3>
-          <h3 id="highScore"></h3>
-          <button id="ButtonRestart" type="button" class="btn btn-warning btn-lg" style="font-size: 50px;"> Jogar
-            novamente</button>
+          <h3 id="highScore">
+            </h4>
+            <button id="ButtonRestart" type="button" class="btn btn-warning btn-lg" style="font-size: 50px;"> Jogar
+              novamente</button>
         </div>
       </div>
     </div>

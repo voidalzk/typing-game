@@ -4,6 +4,10 @@
     font-family: Lintel;
 }
 
+#top {
+    text-align: center;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -60,6 +64,7 @@ body {
     transition: all linear 160ms;
     outline: none;
     color: black;
+    width: 314px
 }
 
 
@@ -104,8 +109,4 @@ body {
 a {
     margin: 2px;
     text-decoration: none;
-}
-
-#top {
-    text-align: center;
 }

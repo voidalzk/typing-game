@@ -23,7 +23,7 @@ body,
 }
 
 .containerJogo {
-
+  margin-top: 150px;
   text-align: center;
   display: none;
   background-color: #41403b;
@@ -33,7 +33,8 @@ body,
   max-width: 90%;
   font-size: 25px;
   font-family: Lintel;
-  color: white
+  color: white;
+  position: fixed;
 }
 
 main {
@@ -47,7 +48,7 @@ main {
 
 .button {
   text-align: center;
-  position: absolute;
+
   top: 20em;
 }
 
@@ -55,16 +56,9 @@ main {
   background-color: #ffc107;
 }
 
-.timer {
-  text-align: center;
-  position: absolute;
-  top: 5rem;
-  font-size: 5rem;
-  color: #ffffff;
-  font-weight: bold;
-}
 
 .quote-display {
+  display: block;
   margin-bottom: 1rem;
   margin-left: calc(1rem + 2px);
   margin-right: calc(1rem + 2px);
@@ -73,6 +67,7 @@ main {
 }
 
 .quote-input {
+  display: block;
   background-color: transparent;
   border: 2px solid #111114;
   outline: none;
@@ -108,8 +103,7 @@ span {
 }
 
 #texto {
-
-  margin-top: 45px;
+  margin-top: 80px;
   border-radius: 2px;
   font-size: 25px;
   font-family: Lintel;
@@ -118,10 +112,30 @@ span {
 
 #divButton {
   text-align: center;
+
 }
 
 #divResults {
   display: none;
+  color: white;
+  text-align: center;
+}
+
+#content {
+  text-align: center;
+}
+
+
+#timer_structure {
+  text-align: center;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5rem;
+  color: #ffffff;
+  font-weight: bold;
+  z-index: 1000;
 }
 
 @keyframes shake {

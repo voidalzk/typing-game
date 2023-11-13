@@ -5,20 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="login.css">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="cadastro.css">
 </head>
 
 <body>
     <div class="page">
         <form method="POST" class="formLogin">
-            <h1 id="top">Login</h1>
-            <p>Digite os seus dados de acesso no campo abaixo.</p>
+            <h1 id="top">Cadastro</h1>
+
             <label for="email">Login</label>
             <input type="email" placeholder="Digite seu Login" autofocus="true" />
+
+            <label for="email"> Confirme seu login</label>
+            <input type="email" placeholder="Confirme seu Login" autofocus="true" />
+
             <label for="password">Senha</label>
             <input type="password" placeholder="Digite sua senha" />
-            <a href="/">Esqueci minha senha</a>
+
+            <label for="password">Confirme sua senha</label>
+            <input type="password" placeholder="Confirme sua senha" />
             <input type="submit" value="Acessar" class="btn" />
         </form>
     </div>
