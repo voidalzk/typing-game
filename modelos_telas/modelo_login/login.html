@@ -11,17 +11,17 @@
 
 <body>
     <div class="page">
-        <form method="POST" class="formLogin">
+        <form method="POST" class="formLogin" id="loginForm">
             <h1 id="top">Login</h1>
-            <p>Digite os seus dados de acesso no campo abaixo.</p>
+            <p>Digite os seus dados de acesso nos campos abaixo.</p>
             <label for="email">Login</label>
-            <input type="email" placeholder="Digite seu Login" autofocus="true" />
+            <input type="email" id="email" placeholder="Digite seu Login" autofocus="true" />
             <label for="password">Senha</label>
-            <input type="password" placeholder="Digite sua senha" />
+            <input type="password" id="password" placeholder="Digite sua senha" />
             <a href="/">Esqueci minha senha</a>
             <input type="submit" value="Acessar" class="btn" />
         </form>
-    </div>
+        <script src="login.js" defer></script>
 
 </body>
 
