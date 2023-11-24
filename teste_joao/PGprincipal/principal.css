@@ -8,7 +8,7 @@ body {
     min-height: 95vh;
     max-height: 95vh;
     margin: 0;
-    background-color: #3a3a41;
+    background-color: #212529
 }
 
 body,
@@ -48,7 +48,7 @@ main {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #3a3a41;
+    background-color: #212529
 }
 
 

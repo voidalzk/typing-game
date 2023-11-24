@@ -23,10 +23,9 @@
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="" class="nav-link px-2 text-secondary">Home</a></li>
-                    <li><a href="" class="nav-link px-2 text-white">Clãs HighScore</a></li>
                 </ul>
                 <div class="text-end">
-                    <a href=""><button type="button" class="btn btn-warning">Login</button></a>
+                    <a href="/typing-game/teste_joao/PGlogin/login.php"><button type="button" class="btn btn-warning">Login</button></a>
                 </div>
             </div>
         </div>
@@ -39,8 +38,8 @@
                     id="buttonStart">JOGAR</button>
             </div>
             <div class="button" id="divButtonLogin">
-                <button type="button" class="btn btn-warning btn-lg" style="font-size: 50px;"
-                    id="buttonLogin">CADASTRO</button>
+                <a href="/typing-game/teste_joao/PGlogin/login.php"><button type="button" class="btn btn-warning btn-lg" style="font-size: 50px;"
+                    id="buttonLogin">LOGIN</button></a>
             </div>
         </div>
         <div id="timer_structure">
