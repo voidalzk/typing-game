@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0;
+    background-color: #3a3a41;
+}
+
+main {
+    min-height: 90vh;
+    background-color: #3a3a41;
+    display: flex;
+}
+
+#conteudo {
+    flex: 3;
+
+    background-color: #3a3a41;
+    padding: 20px;
+    height: 90vh;
+    text-align: center;
+}
+
+#conteudo-right {
+    flex: 1;
+    text-align: center;
+    background-color: #5a5a64;
+    padding: 20px;
+    height: 90vh;
+    text-align: center;
+
+}
+
+#conteudo ul,
+#conteudo-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+#conteudo li,
+#conteudo-right li {
+    margin-bottom: 10px;
+}
+
+#conteudo h1,
+#conteudo-right h1 {
+    color: white;
+}
+
+#existente {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#estou {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#melhor_guild {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}

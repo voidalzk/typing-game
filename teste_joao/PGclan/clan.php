@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="clan.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="principal.css">
-    <title>Speed Typing</title>
+    <title>Guildas</title>
+
 </head>
 
 <body>
@@ -22,33 +23,46 @@
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li><a href="/typing-game/teste_joao\PGjogo\jogo.php" class="nav-link px-2 text-white">Voltar ao Jogo</a></li>
                 </ul>
                 <div class="text-end">
-                    <a href="/typing-game/teste_joao/PGlogin/login.php"><button type="button" class="btn btn-warning">Login</button></a>
+                    <a href=""><button type="button" class="btn btn-warning">Logout</button></a>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-        <div class="container" id="divButtons">
-            <div class="button" id="divButtonStart">
-                <button type="button" class="btn btn-warning btn-lg" style="font-size: 50px;"
-                    id="buttonStart">JOGAR</button>
+        <div id="conteudo">
+            <div id="estou">
+                <h1>Guildas em que estou</h1>
+                <ul>
+                    <li>Guilda A</li>
+                    <li>Guilda B</li>
+                    <li>Guilda C</li>
+                </ul>
+
             </div>
-            <div class="button" id="divButtonLogin">
-                <a href="/typing-game/teste_joao/PGlogin/login.php"><button type="button" class="btn btn-warning btn-lg" style="font-size: 50px;"
-                    id="buttonLogin">LOGIN</button></a>
+            <div id="existente">
+                <h1>Guildas existentes </h1>
+                <ul>
+                    <li>Guilda A</li>
+                    <li>Guilda B</li>
+                    <li>Guilda C</li>
+                </ul>
             </div>
         </div>
-        <div id="timer_structure">
-        <div class="timer" id="timer"  ></div>
-    </div>
-        <div class="containerJogo" id="containerJogo">
-            <div class="quote-display" id="quoteDisplay"></div>
-            <textarea id="quoteInput" class="quote-input" autofocus></textarea>
+        <div id="conteudo-right">
+            <div id="melhor_guild">
+                <h1>Melhores da Guilda</h1>
+                <ul>
+                    <li>Jogador 1</li>
+                    <li>Jogador 2</li>
+                    <li>Jogador 3</li>
+                </ul>
+            </div>
+
         </div>
-        <script src="principal.js"></script>
     </main>
 </body>
 

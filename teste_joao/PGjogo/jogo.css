@@ -1,0 +1,148 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  margin: 0;
+  background-color: #3a3a41;
+}
+
+
+.containerJogo {
+  margin-top: 150px;
+  text-align: center;
+  display: none;
+  background-color: #41403b;
+  padding: 1rem;
+  border-radius: .5rem;
+  width: 700px;
+  max-width: 90%;
+  font-size: 25px;
+  color: white;
+  position: fixed;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  margin: 0;
+  background-color: #3a3a41;
+}
+
+.button {
+  text-align: center;
+  top: 20em;
+}
+
+.quote-display {
+  display: block;
+  margin-bottom: 1rem;
+  margin-left: calc(1rem + 2px);
+  margin-right: calc(1rem + 2px);
+  color: #ffffff;
+  font-size: 2rem;
+}
+
+.quote-input {
+  display: block;
+  background-color: transparent;
+  border: 2px solid #111114;
+  outline: none;
+  width: 100%;
+  height: 8rem;
+  margin: auto;
+  resize: none;
+  padding: .5rem 1rem;
+  font-size: 2rem;
+  border-radius: .5rem;
+}
+
+span {
+  margin: 1px;
+  border-radius: 2px;
+  font-size: 25px;
+}
+
+.quote-input:focus {
+  border-color: rgb(255, 247, 247);
+}
+
+.correct {
+  color: green;
+  background-color: rgba(144, 238, 144, 0.836);
+}
+
+.incorrect {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.205);
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+#texto {
+  margin-top: 80px;
+  border-radius: 2px;
+  font-size: 25px;
+  color: white
+}
+
+#divButton {
+  text-align: center;
+
+}
+
+#divResults {
+  display: none;
+  color: white;
+  text-align: center;
+}
+
+#content {
+  text-align: center;
+}
+
+
+#timer_structure {
+  text-align: center;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5rem;
+  color: #ffffff;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+header {
+  font-family: sans-serif;
+}

@@ -8,7 +8,7 @@ body {
     min-height: 95vh;
     max-height: 95vh;
     margin: 0;
-    background-color: #212529
+    background-color: #b5bcc4
 }
 
 body,
@@ -19,6 +19,7 @@ body,
 .menu {
     position: fixed;
     width: 100%;
+    background-color: #ffffff;
 }
 
 #divButtons {
@@ -36,7 +37,6 @@ body,
     width: 700px;
     max-width: 90%;
     font-size: 25px;
-    font-family: Lintel;
     color: white;
     position: fixed;
 }
@@ -48,7 +48,7 @@ main {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #212529
+    background-color: #2b3743;
 }
 
 
@@ -93,7 +93,7 @@ span {
     margin: 1px;
     border-radius: 2px;
     font-size: 25px;
-    font-family: Lintel;
+
 }
 
 .quote-input:focus {
