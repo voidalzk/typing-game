@@ -1,16 +1,20 @@
-* {
-  font-family: sans-serif;
-  box-sizing: border-box;
-}
-
 body {
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  min-height: 95vh;
+  max-height: 95vh;
   margin: 0;
-  background-color: #3a3a41;
+  background-color: #1e2327
 }
 
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  margin: 0;
+  background-color: #1e2327
+}
 
 .containerJogo {
   margin-top: 150px;
@@ -24,15 +28,6 @@ body {
   font-size: 25px;
   color: white;
   position: fixed;
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 90vh;
-  margin: 0;
-  background-color: #3a3a41;
 }
 
 .button {
@@ -143,6 +138,18 @@ span {
   }
 }
 
-header {
-  font-family: sans-serif;
+.btn {
+  background-color: #ffc107;
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+  border: none !important;
+  transition: all linear 160ms;
+  cursor: pointer;
+  margin: 0 !important;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background-color: #ebf82e;
 }
