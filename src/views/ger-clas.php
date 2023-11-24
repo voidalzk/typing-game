@@ -2,40 +2,45 @@
 
 session_start();
 
-    include("../inc/connection.php");
+include("../inc/connection.php");
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {   
-        $acao = $_POST["acao"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {   
+    $acao = $_POST["acao"];
 
-        if ($acao == "criar") {
-            $clan_name = $_POST["clan_name"];
-            $clan_id = $_POST["clan_id"];
+    if ($acao == "criar") {
+        $clan_name = isset($_POST["clan_name"]) ? $_POST["clan_name"] : '';
 
-            
-            $sql = "INSERT INTO Clans (clan_id, clan_name) VALUES ('$clan_id', '$clan_name')";
-            if ($conn->query($sql) === TRUE) {
-                $clan_id = $conn->insert_id;
-
-                $user_id = $_SESSION["user_id"];
-                $sqlUpdateUser = "UPDATE Users SET clan_id = $clan_id WHERE id = $user_id";
-                $conn->query($sqlUpdateUser);
-
-                echo "Clã criado com sucesso!";
-            } else {
-                echo "Erro ao criar clã: " . $conn->error;
-            }
-        } elseif ($acao == "entrar") {
-            $idClanEscolhido = $_POST["id_clan"];
+        $sql = "INSERT INTO Clans (clan_id, clan_name) VALUES (NULL, '$clan_name')";
+        if ($con->query($sql) === TRUE) {
+            $clan_id = $con->insert_id;
 
             $user_id = $_SESSION["user_id"];
-            $sqlUpdateUser = "UPDATE usuarios SET clan_id = $idClanEscolhido WHERE id = $user_id";
-            $conn->query($sqlUpdateUser);
+            $sqlUpdateUser = "UPDATE Users SET clan_id = $clan_id WHERE user_id = $user_id";
+            $con->query($sqlUpdateUser);
 
-            echo "Você se juntou a um clã!";
+            echo "Clã criado com sucesso!";
+            header("Location: ger-clas.php"); 
+            exit();
+        } else {
+            echo "Erro ao criar clã: " . $con->error;
         }
+    } elseif ($acao == "entrar") {
+        $idClanEscolhido = isset($_POST["id_clan"]) ? $_POST["id_clan"] : '';
+
+        $user_id = $_SESSION["user_id"];
+        $sqlUpdateUser = "UPDATE Users SET clan_id = $idClanEscolhido WHERE user_id = $user_id";
+        $con->query($sqlUpdateUser);
+
+        echo "Você se juntou a um clã!";
+        header("Location: ger-clas.php"); 
+        exit();
     }
-    $conn->close();
+}
+$con->close();
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +48,21 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Clãs</title>
+    <script>
+        function toggleFields() {
+            var acao = document.getElementById("acao").value;
+            var criarClaDiv = document.getElementById("criar-cla");
+            var entrarClaDiv = document.getElementById("entrar-cla");
+
+            if (acao === "criar") {
+                criarClaDiv.style.display = "block";
+                entrarClaDiv.style.display = "none";
+            } else if (acao === "entrar") {
+                criarClaDiv.style.display = "none";
+                entrarClaDiv.style.display = "block";
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -50,7 +70,7 @@ session_start();
 
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
     <label for="acao">Escolha uma ação:</label>
-    <select name="acao" id="acao">
+    <select name="acao" id="acao" onchange="toggleFields()">
         <option value="criar">Criar Clã</option>
         <option value="entrar">Entrar em Clã Existente</option>
     </select>
@@ -58,23 +78,22 @@ session_start();
     <br>
     
     <div id="criar-cla" style="display:none;">
-        <label for="nome_clan">Nome do Clã:</label>
-        <input type="text" name="nome_clan">
-
-
+        <label for="clan_name">Nome do Clã:</label>
+        <input type="text" name="clan_name">
     </div>
 
-   
     <div id="entrar-cla" style="display:none;">
         <label for="id_clan">Escolha um Clã:</label>
         <select name="id_clan">
             <?php
+            include("../inc/connection.php"); 
             $sql = "SELECT * FROM Clans";
-            $result = $conn->query($sql);
+            $result = $con->query($sql);
 
             while ($row = $result->fetch_assoc()) {
-                echo "<option value='" . $row['id_clan'] . "'>" . $row['nome_clan'] . "</option>";
+                echo "<option value='" . $row['clan_id'] . "'>" . $row['clan_name'] . "</option>";
             }
+            $con->close();
             ?>
         </select>
     </div>
