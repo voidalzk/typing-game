@@ -64,7 +64,7 @@ $con->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Clãs</title>
-    <link rel="stylesheet" href="ger-clans.css">
+    <link rel="stylesheet" href="ger-clas.css">
     <script>
         function toggleFields() {
             var acao = document.getElementById("acao").value;

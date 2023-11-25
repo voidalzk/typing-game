@@ -16,7 +16,7 @@ $user_data = check_login($con);
 </head>
 <body>
     <div class="buttons">
-        <a href="historico.php">Histórico</a>
+        <a href="hist.php">Histórico</a>
         <a href="clans.php">Clas</a>
 		<a href="ger-clans.php">Criar/Entrar em clãs</a>
     </div>

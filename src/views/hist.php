@@ -63,12 +63,13 @@ $result = $con->query($sql);
 
 if ($result && $result->num_rows > 0) {
     echo "<table>";
-    echo "<tr><th>Match ID</th><th>Pontos</th></tr>";
+    echo "<tr><th>Match ID</th><th>Pontos</th><th>Data do Jogo</th></tr>";
     
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row['match_id'] . "</td>";
         echo "<td>" . $row['points'] . "</td>";
+        echo "<td>" . $row['date_match'] . "</td>"; 
         echo "</tr>";
     }
 
@@ -82,5 +83,3 @@ $con->close();
 
 </body>
 </html>
-
-
