@@ -1,0 +1,118 @@
+body {
+    justify-content: center;
+    align-items: center;
+    min-height: 95vh;
+    max-height: 95vh;
+    margin: 0;
+    background-color: #1e2327;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    margin: 0;
+    background-color: #1e2327;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #1e2327;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    background-color: RGBA(33, 37, 41, var(--bs-bg-opacity, 1)) !important;
+    border-radius: 7px;
+    padding: 40px;
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+    gap: 5px;
+    width: 60vh;
+}
+
+.areaLogin img {
+    width: 420px;
+}
+
+label {
+    color: white;
+}
+
+.formLogin h1 {
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    font-size: 2.3em;
+    color: white;
+}
+
+.formLogin p {
+    display: inline-block;
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.formLogin input {
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 4px;
+    transition: all linear 160ms;
+    outline: none;
+    color: black;
+}
+
+.formLogin input:focus {
+    border: 1px solid #ffc107;
+}
+
+.formLogin label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.formLogin a {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #fff;
+    transition: all linear 160ms;
+}
+
+.formLogin a:hover {
+    color: #ffc107;
+}
+
+.btn {
+    background-color: #ffc107;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #ebf82e;
+}
+
+a {
+    margin: 2px;
+    text-decoration: none;
+}
+
+#top {
+    text-align: center;
+}
