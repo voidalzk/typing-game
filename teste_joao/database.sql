@@ -22,3 +22,12 @@ CREATE TABLE historic(
     CONSTRAINT PKHISTORIC PRIMARY KEY(match_id),
     CONSTRAINT FKHISTORICUSER FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE clan_historic(
+	match_id SERIAL,
+    user_id INT NOT NULL,
+    points INT NOT NULL,
+    date_match TIMESTAMP NOT NULL,
+    CONSTRAINT PKHISTORIC PRIMARY KEY(match_id),
+    CONSTRAINT FKHISTORICUSER FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
