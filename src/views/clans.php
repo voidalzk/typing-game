@@ -31,7 +31,7 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="clan.css">
+    <link rel="stylesheet" href="clans.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Clãs</title>
 
@@ -81,14 +81,13 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
                 <h1>Clãs existentes </h1>
                 <ul>
                 <?php
-                    
-                    $sqlOtherGuilds = "SELECT clan_name FROM Clans WHERE clan_id NOT IN (SELECT DISTINCT clan_id FROM Users)";
+                    $sqlOtherGuilds = "SELECT clan_name FROM Clans";
                     $resultOtherGuilds = $con->query($sqlOtherGuilds);
 
                     while ($rowOtherGuilds = $resultOtherGuilds->fetch_assoc()) {
                         echo "<li>{$rowOtherGuilds['clan_name']}</li>";
                     }
-                    ?>
+                ?>
                 </ul>
             </div>
         </div>

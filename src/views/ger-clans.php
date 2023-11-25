@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $con->query($sqlUpdateUser);
     
                 echo "Você se juntou a um clã!";
-                header("Location: ger-clas.php");
+                header("Location: ger-clans.php");
                 exit();
             } else {
                 echo "Senha incorreta. Tente novamente.";
@@ -64,7 +64,7 @@ $con->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Clãs</title>
-    <link rel="stylesheet" href="ger-clas.css">
+    <link rel="stylesheet" href="ger-clans.css">
     <script>
         function toggleFields() {
             var acao = document.getElementById("acao").value;
@@ -113,6 +113,7 @@ $con->close();
         <label for="clan_password">Senha do Clã:</label>
         <input type="password" name="clan_password">
         </div>
+        <input type="submit" class="btn" class="margin-left" value="Click Me!">
       
     </div>
 
@@ -133,7 +134,7 @@ $con->close();
         
         <label for="clan_password_entered">Senha do Clã:</label>
         <input type="password" name="clan_password_entered">
-        
+        <input type="submit" class="btn" class="margin-left" value="Click Me!">
     </div>
 
     <br>
