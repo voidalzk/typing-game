@@ -63,7 +63,7 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
     <main>
         <div id="conteudo">
             <div id="estou">
-                <h1>Guilda em que estou</h1>
+                <h1>Clã em que estou</h1>
                 <ul>
                 <?php
                     if ($resultClanInfo->num_rows > 0) {
@@ -78,7 +78,7 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
 
             </div>
             <div id="existente">
-                <h1>Guildas existentes </h1>
+                <h1>Clãs existentes </h1>
                 <ul>
                 <?php
                     
@@ -94,7 +94,7 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
         </div>
         <div id="conteudo-right">
             <div id="melhor_guild">
-                <h1>Membros da Guilda</h1>
+                <h1>Membros do Clã</h1>
                 <ul>
                 <?php
                 if ($resultClanMembers->num_rows > 0) {
