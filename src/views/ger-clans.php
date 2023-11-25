@@ -56,12 +56,15 @@ $con->close();
 
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Clãs</title>
+    <link rel="stylesheet" href="ger-clas.css">
     <script>
         function toggleFields() {
             var acao = document.getElementById("acao").value;
@@ -80,23 +83,37 @@ $con->close();
 </head>
 <body>
 
-<h2>Gerenciamento de Clãs</h2>
+<div class="page"> 
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-    <label for="acao">Escolha uma ação:</label>
-    <select name="acao" id="acao" onchange="toggleFields()">
+
+
+
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="formLogin" class="formLogin">
+<h1>Gerenciamento de Clãs</h1>
+
+    <label for="acao" id="texto">Escolha uma ação:</label>
+
+    
+    <select name="acao" id="acao" class="margin-left" onchange="toggleFields()">
         <option value="criar">Criar Clã</option>
         <option value="entrar">Entrar em Clã Existente</option>
     </select>
+    
+    <button type="button" class="btn" class="margin-left">Click Me!</button>
+     
 
     <br>
     
     <div id="criar-cla" style="display:none;">
+    <div>
         <label for="clan_name">Nome do Clã:</label>
         <input type="text" name="clan_name">
-        
+        </div>
+        <div>
         <label for="clan_password">Senha do Clã:</label>
         <input type="password" name="clan_password">
+        </div>
+      
     </div>
 
     <div id="entrar-cla" style="display:none;">
@@ -116,11 +133,13 @@ $con->close();
         
         <label for="clan_password_entered">Senha do Clã:</label>
         <input type="password" name="clan_password_entered">
+        
     </div>
 
     <br>
 
-    <input type="submit" value="Enviar">
+  
+    </div>
 </form>
 
 </body>

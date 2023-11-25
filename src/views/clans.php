@@ -5,14 +5,24 @@ session_start();
 include("../inc/connection.php");
 
 $user_id = $_SESSION["user_id"];
-;;$sqlClanInfo = "SELECT c.clan_name, u.username FROM Clans c INNER JOIN Users u ON c.clan_id = u.clan_id WHERE u.user_id = $user_id";
+$sqlClanInfo = "SELECT c.clan_name, u.username FROM Clans c INNER JOIN Users u ON c.clan_id = u.clan_id WHERE u.user_id = $user_id";
 $resultClanInfo = $con->query($sqlClanInfo);
 
-
-$sqlClanMembers = "SELECT username FROM Users WHERE clan_id = (SELECT clan_id FROM Users WHERE user_id = $user_id)";
+$sqlClanMembers = "SELECT u.username, COALESCE(SUM(h.points), 0) as total_points 
+                   FROM Users u 
+                   LEFT JOIN historic h ON u.user_id = h.user_id 
+                   WHERE u.clan_id = (SELECT clan_id FROM Users WHERE user_id = $user_id)
+                   GROUP BY u.user_id";
 $resultClanMembers = $con->query($sqlClanMembers);
 
+$sqlClanWeeklyPoints = "SELECT COALESCE(SUM(points), 0) as weekly_points 
+                        FROM historic 
+                        WHERE user_id IN (SELECT user_id FROM Users WHERE clan_id = (SELECT clan_id FROM Users WHERE user_id = $user_id))
+                        AND date_match >= NOW() - INTERVAL 7 DAY"; // Substitua 'date_match' pelo nome correto da coluna que armazena a data
+$resultClanWeeklyPoints = $con->query($sqlClanWeeklyPoints);
+$weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +69,6 @@ $resultClanMembers = $con->query($sqlClanMembers);
                     if ($resultClanInfo->num_rows > 0) {
                         $rowClanInfo = $resultClanInfo->fetch_assoc();
                         echo "<li>{$rowClanInfo['clan_name']}</li>";
-                        echo "<li>{$rowClanInfo['username']}</li>";
                     } else {
                         echo "<li>Não pertence a nenhuma guilda</li>";
                     }
@@ -88,20 +97,26 @@ $resultClanMembers = $con->query($sqlClanMembers);
                 <h1>Membros da Guilda</h1>
                 <ul>
                 <?php
-                    
-                    if ($resultClanMembers->num_rows > 0) {
-                        while ($rowClanMembers = $resultClanMembers->fetch_assoc()) {
-                            echo "<li>{$rowClanMembers['username']}</li>";
-                        }
-                    } else {
-                        echo "<li>Nenhum membro no clã</li>";
+                if ($resultClanMembers->num_rows > 0) {
+                    while ($rowClanMembers = $resultClanMembers->fetch_assoc()) {
+                        $username = $rowClanMembers['username'];
+                        $totalPoints = $rowClanMembers['total_points'];
+                        echo "<li>$username - Pontuação Acumulativa: $totalPoints</li>";
                     }
-                    ?>
+                } else {
+                    echo "<li>Nenhum membro no clã</li>";
+                }
+            ?>
                 </ul>
             </div>
 
         </div>
+
+        <div id="pontuacao-semanal">
+            <h1>Pontuação Semanal do Clã</h1>
+            <p>Pontuação Total Semanal: <?php echo $weeklyPoints; ?></p>
+        </div>
+    </div>
     </main>
 </body>
-
 </html>
