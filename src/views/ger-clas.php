@@ -11,12 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $clan_name = isset($_POST["clan_name"]) ? $_POST["clan_name"] : '';
         $clan_password = isset($_POST["clan_password"]) ? $_POST["clan_password"] : '';
 
-        $sql = "INSERT INTO Clans (clan_id, clan_name, clan_password) VALUES (NULL, '$clan_name', '$clan_password')";
+        $sql = "INSERT INTO clans (clan_id, clan_name, clan_password) VALUES (NULL, '$clan_name', '$clan_password')";
         if ($con->query($sql) === TRUE) {
             $clan_id = $con->insert_id;
 
             $user_id = $_SESSION["user_id"];
-            $sqlUpdateUser = "UPDATE Users SET clan_id = $clan_id WHERE user_id = $user_id";
+            $sqlUpdateUser = "UPDATE users SET clan_id = $clan_id WHERE user_id = $user_id";
             $con->query($sqlUpdateUser);
 
             echo "Clã criado com sucesso!";
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $clan_password_entered = isset($_POST["clan_password_entered"]) ? $_POST["clan_password_entered"] : '';
     
        
-        $sqlCheckPassword = "SELECT clan_password FROM Clans WHERE clan_id = $idClanEscolhido";
+        $sqlCheckPassword = "SELECT clan_password FROM clans WHERE clan_id = $idClanEscolhido";
         $result = $con->query($sqlCheckPassword);
     
         if ($result->num_rows > 0) {
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($clan_password_entered == $stored_password) {
                 
                 $user_id = $_SESSION["user_id"];
-                $sqlUpdateUser = "UPDATE Users SET clan_id = $idClanEscolhido WHERE user_id = $user_id";
+                $sqlUpdateUser = "UPDATE users SET clan_id = $idClanEscolhido WHERE user_id = $user_id";
                 $con->query($sqlUpdateUser);
     
                 echo "Você se juntou a um clã!";
@@ -106,7 +106,7 @@ $con->close();
         <select name="id_clan">
             <?php
             include("../inc/connection.php"); 
-            $sql = "SELECT * FROM Clans";
+            $sql = "SELECT * FROM clans";
             $result = $con->query($sql);
 
             while ($row = $result->fetch_assoc()) {

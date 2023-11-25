@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['matchResult'])) {
     $result = $conn->query($sql);
 
     if ($result && $result->fetch_assoc()['count'] > 0) {
-        $sql_insert = "INSERT INTO Hist (match_id, user_id, points) VALUES ('$match_id', '$user_id', '$points')";
+        $sql_insert = "INSERT INTO historic (match_id, user_id, points) VALUES ('$match_id', '$user_id', '$points')";
         $conn->query($sql_insert);
     }
 }
