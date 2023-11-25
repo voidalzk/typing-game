@@ -1,24 +1,58 @@
 <?php 
 session_start();
 
-	include("../inc/connection.php");
-	include("../inc/functions.php");
 
-	$user_data = check_login($con);
+include("../inc/connection.php");
+include("../inc/functions.php");
+
+
+
+$user_data = check_login($con);
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Jogo Digitação</title>
+    <title>Jogo Digitação</title>
+    <style>
+        /* Adicione algum estilo aqui se necessário */
+        body {
+            text-align: center;
+        }
+        .buttons {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+        .buttons a {
+            margin-right: 10px;
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
+    <div class="buttons">
+        <a href="historico.php">Histórico</a>
+        <a href="guilda.php">Clas</a>
+        <a href="recorde.php">Recorde</a>
+		<a href="ger-clas.php">Criar/Entrar em clãs</a>
+    </div>
 
-	<a href="src/views/logout.php">Logout</a>
-	<h1>Pagina principal</h1>
-
-	<br>
-	Oie, <?php echo $user_data['username']; ?>
+    <?php 
+    if ($user_data) {
+        echo '<a href="logout.php">Logout</a>';
+        echo '<h1>Página principal</h1>';
+        echo '<br>Oie, ' . $user_data['username'];
+    } else {
+        // Redirecione para a página de login se o usuário não estiver logado
+        header("Location: login.php");
+        exit();
+    }
+    ?>
 </body>
 </html>
