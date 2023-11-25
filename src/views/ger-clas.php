@@ -48,21 +48,6 @@ $con->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Clãs</title>
-    <script>
-        function toggleFields() {
-            var acao = document.getElementById("acao").value;
-            var criarClaDiv = document.getElementById("criar-cla");
-            var entrarClaDiv = document.getElementById("entrar-cla");
-
-            if (acao === "criar") {
-                criarClaDiv.style.display = "block";
-                entrarClaDiv.style.display = "none";
-            } else if (acao === "entrar") {
-                criarClaDiv.style.display = "none";
-                entrarClaDiv.style.display = "block";
-            }
-        }
-    </script>
 </head>
 <body>
 
