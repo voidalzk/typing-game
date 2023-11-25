@@ -13,7 +13,7 @@ $user_data = check_login($con);
 <head>
     <title>Jogo Digitação</title>
     <style>
-        /* Adicione algum estilo aqui se necessário */
+        
         body {
             text-align: center;
         }
@@ -46,7 +46,7 @@ $user_data = check_login($con);
         echo '<h1>Página principal</h1>';
         echo '<br>Oie, ' . $user_data['username'];
     } else {
-        // Redirecione para a página de login se o usuário não estiver logado
+        
         header("Location: login.php");
         exit();
     }
