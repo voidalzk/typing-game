@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+include("../inc/connection.php");
+
+$user_id = $_SESSION["user_id"];
+$sqlClanInfo = "SELECT c.clan_name, u.username FROM Clans c INNER JOIN Users u ON c.clan_id = u.clan_id WHERE u.user_id = $user_id";
+$resultClanInfo = $con->query($sqlClanInfo);
+
+
+$sqlClanMembers = "SELECT username FROM Users WHERE clan_id = (SELECT clan_id FROM Users WHERE user_id = $user_id)";
+$resultClanMembers = $con->query($sqlClanMembers);
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +55,15 @@
             <div id="estou">
                 <h1>Guilda em que estou</h1>
                 <ul>
-                    <li>Guilda A</li>
+                <?php
+                    if ($resultClanInfo->num_rows > 0) {
+                        $rowClanInfo = $resultClanInfo->fetch_assoc();
+                        echo "<li>{$rowClanInfo['clan_name']}</li>";
+                        echo "<li>{$rowClanInfo['username']}</li>";
+                    } else {
+                        echo "<li>Não pertence a nenhuma guilda</li>";
+                    }
+                    ?>
                     
                 </ul>
 
@@ -48,9 +71,15 @@
             <div id="existente">
                 <h1>Guildas existentes </h1>
                 <ul>
-                    <li>Guilda A</li>
-                    <li>Guilda B</li>
-                    <li>Guilda C</li>
+                <?php
+                    
+                    $sqlOtherGuilds = "SELECT clan_name FROM Clans WHERE clan_id NOT IN (SELECT DISTINCT clan_id FROM Users)";
+                    $resultOtherGuilds = $con->query($sqlOtherGuilds);
+
+                    while ($rowOtherGuilds = $resultOtherGuilds->fetch_assoc()) {
+                        echo "<li>{$rowOtherGuilds['clan_name']}</li>";
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -58,9 +87,16 @@
             <div id="melhor_guild">
                 <h1>Membros da Guilda</h1>
                 <ul>
-                    <li>Jogador 1</li>
-                    <li>Jogador 2</li>
-                    <li>Jogador 3</li>
+                <?php
+                    
+                    if ($resultClanMembers->num_rows > 0) {
+                        while ($rowClanMembers = $resultClanMembers->fetch_assoc()) {
+                            echo "<li>{$rowClanMembers['username']}</li>";
+                        }
+                    } else {
+                        echo "<li>Nenhum membro no clã</li>";
+                    }
+                    ?>
                 </ul>
             </div>
 
