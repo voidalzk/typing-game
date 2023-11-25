@@ -9,8 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($acao == "criar") {
         $clan_name = isset($_POST["clan_name"]) ? $_POST["clan_name"] : '';
+        $clan_password = isset($_POST["clan_password"]) ? $_POST["clan_password"] : '';
 
-        $sql = "INSERT INTO Clans (clan_id, clan_name) VALUES (NULL, '$clan_name')";
+        $sql = "INSERT INTO Clans (clan_id, clan_name, clan_password) VALUES (NULL, '$clan_name', '$clan_password')";
         if ($con->query($sql) === TRUE) {
             $clan_id = $con->insert_id;
 
@@ -26,14 +27,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } elseif ($acao == "entrar") {
         $idClanEscolhido = isset($_POST["id_clan"]) ? $_POST["id_clan"] : '';
-
-        $user_id = $_SESSION["user_id"];
-        $sqlUpdateUser = "UPDATE Users SET clan_id = $idClanEscolhido WHERE user_id = $user_id";
-        $con->query($sqlUpdateUser);
-
-        echo "Você se juntou a um clã!";
-        header("Location: ger-clas.php"); 
-        exit();
+        $clan_password_entered = isset($_POST["clan_password_entered"]) ? $_POST["clan_password_entered"] : '';
+    
+       
+        $sqlCheckPassword = "SELECT clan_password FROM Clans WHERE clan_id = $idClanEscolhido";
+        $result = $con->query($sqlCheckPassword);
+    
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $stored_password = $row["clan_password"];
+    
+            if ($clan_password_entered == $stored_password) {
+                
+                $user_id = $_SESSION["user_id"];
+                $sqlUpdateUser = "UPDATE Users SET clan_id = $idClanEscolhido WHERE user_id = $user_id";
+                $con->query($sqlUpdateUser);
+    
+                echo "Você se juntou a um clã!";
+                header("Location: ger-clas.php");
+                exit();
+            } else {
+                echo "Senha incorreta. Tente novamente.";
+            }
+        }
     }
 }
 $con->close();
@@ -80,6 +96,9 @@ $con->close();
     <div id="criar-cla" style="display:none;">
         <label for="clan_name">Nome do Clã:</label>
         <input type="text" name="clan_name">
+        
+        <label for="clan_password">Senha do Clã:</label>
+        <input type="password" name="clan_password">
     </div>
 
     <div id="entrar-cla" style="display:none;">
@@ -96,6 +115,9 @@ $con->close();
             $con->close();
             ?>
         </select>
+        
+        <label for="clan_password_entered">Senha do Clã:</label>
+        <input type="password" name="clan_password_entered">
     </div>
 
     <br>
