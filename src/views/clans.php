@@ -31,14 +31,14 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="clans.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Clãs</title>
+    <link rel="stylesheet" href="../public/clans.css">
+    <title>Ligas</title>
 
 </head>
 
 <body>
-    <header class="p-3 text-bg-dark menu">
+    <header class="p-3 menu">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -48,9 +48,9 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="C:\xampp\htdocs\typing-game\teste_joao\PGprincipal\principal.html"
-                            class="nav-link px-2 text-secondary">Home</a></li>
-                    <li><a href="/typing-game/teste_joao\PGjogo\jogo.php" class="nav-link px-2 text-white">Voltar ao
+                    <li><a href="index.php"
+                            class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="jogo.php" class="nav-link px-2 text-white">Voltar ao
                             Jogo</a></li>
                 </ul>
                 <div class="text-end">
@@ -61,59 +61,63 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
     </header>
 
     <main>
-        <div id="conteudo">
-            <div id="estou">
-                <h1>Clã em que estou</h1>
-                <ul>
-                <?php
-                    if ($resultClanInfo->num_rows > 0) {
-                        $rowClanInfo = $resultClanInfo->fetch_assoc();
-                        echo "<li>{$rowClanInfo['clan_name']}</li>";
-                    } else {
-                        echo "<li>Não pertence a nenhuma guilda</li>";
-                    }
-                    ?>
-                    
-                </ul>
-
+        <div id="content-left">
+            <div class="headerLiga">
+                <div id="Actual" class="DivsLeft">
+                    <h1>Liga em que estou</h1>
+                        <?php
+                            if ($resultClanInfo->num_rows > 0) {
+                                $rowClanInfo = $resultClanInfo->fetch_assoc();
+                                echo "<h3>{$rowClanInfo['clan_name']}</h3>";
+                            } else {
+                                echo "<h3>Não pertence a nenhuma guilda</h3>";
+                            }
+                        ?> 
+                </div>
+                <div id="pontuacao-semanal" class="DivsLeft">
+                    <h1>Pontuação Semanal do Clã</h1>
+                    <p>Pontuação Total Semanal: <?php echo $weeklyPoints; ?></p>
+                </div>    
             </div>
-            <div id="existente">
-                <h1>Clãs existentes </h1>
-                <ul>
+            <div id="melhor_guild">
+                <h1>Membros da Liga</h1>
+                <table>
+                <tr>
+                    <th>Username</th>
+                    <th>Pontuação</th>
+                </tr>
                 <?php
-                    $sqlOtherGuilds = "SELECT clan_name FROM Clans";
-                    $resultOtherGuilds = $con->query($sqlOtherGuilds);
-
-                    while ($rowOtherGuilds = $resultOtherGuilds->fetch_assoc()) {
-                        echo "<li>{$rowOtherGuilds['clan_name']}</li>";
+                    if ($resultClanMembers->num_rows > 0) {
+                        while ($rowClanMembers = $resultClanMembers->fetch_assoc()) {
+                            $username = $rowClanMembers['username'];
+                            $totalPoints = $rowClanMembers['total_points'];
+                            echo "<tr>";
+                            echo "<td>$username</td>";
+                            echo "<td>Pontuação Acumulativa: $totalPoints</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='2'>Nenhum membro no clã</td></tr>";
                     }
                 ?>
-                </ul>
+                </table>
             </div>
         </div>
-        <div id="conteudo-right">
-            <div id="melhor_guild">
-                <h1>Membros do Clã</h1>
-                <ul>
-                <?php
-                if ($resultClanMembers->num_rows > 0) {
-                    while ($rowClanMembers = $resultClanMembers->fetch_assoc()) {
-                        $username = $rowClanMembers['username'];
-                        $totalPoints = $rowClanMembers['total_points'];
-                        echo "<li>$username - Pontuação Acumulativa: $totalPoints</li>";
-                    }
-                } else {
-                    echo "<li>Nenhum membro no clã</li>";
-                }
-            ?>
-                </ul>
+        <div id="content-right">
+            <div id="Others">
+                    <h1>Ligas existentes </h1>
+                    <ul>
+                    <?php
+                        $sqlOtherGuilds = "SELECT clan_name FROM Clans";
+                        $resultOtherGuilds = $con->query($sqlOtherGuilds);
+
+                        while ($rowOtherGuilds = $resultOtherGuilds->fetch_assoc()) {
+                            echo "<td>{$rowOtherGuilds['clan_name']}</td>";
+                        }
+                    ?>
+                    </ul>
+                </div>
             </div>
-
-        </div>
-
-        <div id="pontuacao-semanal">
-            <h1>Pontuação Semanal do Clã</h1>
-            <p>Pontuação Total Semanal: <?php echo $weeklyPoints; ?></p>
         </div>
     </div>
     </main>

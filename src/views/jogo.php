@@ -4,32 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="jogo.css">
+  <link rel="stylesheet" href="..\public\jogo.css">
   <title>Speed Typing</title>
 </head>
 
 <body>
-  <header class="p-3 text-bg-dark menu">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-            <use xlink:href="#bootstrap" />
-          </svg>
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="C:\xampp\htdocs\typing-game\teste_joao\PGprincipal\principal.html"
-              class="nav-link px-2 text-secondary">Home</a>
-          </li>
-        </ul>
-        <div class="text-end">
-          <a href=""><button type="button" class="btn btn-warning">Logout</button></a>
+  <header class="p-3  menu">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap" />
+                    </svg>
+                </a>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
+                </ul>
+                <div class="text-end">
+                    <a href="logout.php"><button type="button"
+                            class="btn btn-warning">Logout</button></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
   </header>
   <main>
     <div id="content">
@@ -61,7 +58,7 @@
       </div>
     </div>
   </main>
-  <script src="jogo.js" defer></script>
+  <script src="..\public\jogo.js" defer></script>
 </body>
 
 </html>

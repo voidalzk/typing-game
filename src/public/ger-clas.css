@@ -1,13 +1,51 @@
 body {
-    font-family: 'Inter', sans-serif;
+    justify-content: center;
+    align-items: center;
     margin: 0;
-    padding: 0;
-    background-color: #3a3a41;
-    box-sizing: border-box;
+    background-color: #1e2327;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #1e2327;
+}
+
+.menu {
+    width: 100%;
+    background-color: black;
+}
+
+.page,
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.btn {
+    background-color: #ffc107;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #ebf82e;
 }
 
 .formLogin {
-    justify-content: center;
     display: flex;
     flex-direction: column;
     background-color: #41403b;
@@ -15,7 +53,8 @@ body {
     padding: 40px;
     box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
     gap: 5px;
-    text-align: center;
+    height: 55vh;
+    width: 500px;
 }
 
 .areaLogin img {
@@ -24,10 +63,9 @@ body {
 
 .formLogin h1 {
     padding: 0;
-    margin: 15px;
+    margin: 0;
     font-weight: 500;
     font-size: 2.3em;
-
 }
 
 .formLogin p {
@@ -47,22 +85,30 @@ body {
     transition: all linear 160ms;
     outline: none;
     color: black;
-    width: 314px
 }
 
+#id_clan {
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 4px;
+    transition: all linear 160ms;
+    outline: none;
+    color: black;
+}
 
 .formLogin input:focus {
     border: 1px solid #ffc107;
 }
 
 .formLogin label {
-    margin: 10px;
     font-size: 14px;
     font-weight: 600;
 }
 
 .formLogin a {
-    justify-content: center;
     display: inline-block;
     margin-bottom: 20px;
     font-size: 13px;
@@ -74,28 +120,6 @@ body {
     color: #ffc107;
 }
 
-.page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
-    background-color: #212529;
-    text-align: center;
-}
-
-
-#acao {
-    margin-bottom: 10px;
-    text-align: center;
-    height: 25px;
-    width: 330px;
-}
-
-
-
 .btn {
     background-color: #ffc107;
     color: black;
@@ -104,10 +128,6 @@ body {
     border: none !important;
     transition: all linear 160ms;
     cursor: pointer;
-    height: 25px;
-    width: 330px;
-    margin-left: 50px;
-
 }
 
 .btn:hover {
@@ -115,15 +135,11 @@ body {
     background-color: #ebf82e;
 }
 
-#texto {
-    margin: 10px;
-    text-align: center;
-    height: 25px;
-    width: 330px;
-    font-size: 20px;
-
+a {
+    margin: 2px;
+    text-decoration: none;
 }
 
-.margin-left {
-    margin-left: 50px;
+#top {
+    text-align: center;
 }

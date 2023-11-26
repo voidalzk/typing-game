@@ -53,24 +53,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 $con->close();
-
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Clãs</title>
-    <link rel="stylesheet" href="ger-clas.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/ger-clas.css">
     <script>
         function toggleFields() {
             var acao = document.getElementById("acao").value;
             var criarClaDiv = document.getElementById("criar-cla");
             var entrarClaDiv = document.getElementById("entrar-cla");
-
             if (acao === "criar") {
                 criarClaDiv.style.display = "block";
                 entrarClaDiv.style.display = "none";
@@ -82,66 +78,70 @@ $con->close();
     </script>
 </head>
 <body>
-
-<div class="page"> 
-
-
-
-
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="formLogin" class="formLogin">
-<h1>Gerenciamento de Clãs</h1>
-
-    <label for="acao" id="texto">Escolha uma ação:</label>
-
-    
-    <select name="acao" id="acao" class="margin-left" onchange="toggleFields()">
-        <option value="criar">Criar Clã</option>
-        <option value="entrar">Entrar em Clã Existente</option>
-    </select>
-    
-    <button type="button" class="btn" class="margin-left">Click Me!</button>
-     
-
-    <br>
-    
-    <div id="criar-cla" style="display:none;">
-    <div>
-        <label for="clan_name">Nome do Clã:</label>
-        <input type="text" name="clan_name">
+    <header class="p-3 menu">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap" />
+                    </svg>
+                </a>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="hist.php" class="nav-link px-2 text-white">Histórico</a></li>
+                    <li><a href="clans.php" class="nav-link px-2 text-white">Minha liga</a></li>
+                    <li><a href="ger-clans.php" class="nav-link px-2 text-white">Criar/Entrar em ligas</a></li>
+                </ul>
+                <div class="text-end">
+                    <a href="logout.php"><button type="button"
+                            class="btn btn-warning">Logout</button></a>
+                </div>
+            </div>
         </div>
-        <div>
-        <label for="clan_password">Senha do Clã:</label>
-        <input type="password" name="clan_password">
+    </header>
+    <main>
+        <div class="page"> 
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="formLogin" class="formLogin">
+                <h1>Gerenciamento de ligas</h1>
+                <label for="acao" id="texto">Escolha uma ação:</label>                
+                <select name="acao" id="acao" class="margin-left" onchange="toggleFields()">
+                    <option value="criar">Criar liga</option>
+                    <option value="entrar">Entrar em liga Existente</option>
+                </select>
+                <button type="button" class="btn" class="margin-left">Click Me!</button>
+                <br>
+                <div id="criar-cla" style="display:none;">
+                <div>
+                    <label for="clan_name">Nome da liga:</label><br>
+                    <input type="text" name="clan_name">
+                    </div>
+                    <div>
+                    <label for="clan_password">Senha da liga:</label><br>
+                    <input type="password" name="clan_password">
+                    </div>
+                    <input type="submit" class="btn" class="margin-left" value="Click Me!">
+                </div>
+                <div id="entrar-cla" style="display:none;">
+                    <label for="id_clan">Escolha uma liga:</label><br>
+                    <select name="id_clan">
+                        <?php
+                        include("../inc/connection.php"); 
+                        $sql = "SELECT * FROM clans";
+                        $result = $con->query($sql);
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['clan_id'] . "'>" . $row['clan_name'] . "</option>";
+                        }
+                        $con->close();
+                        ?>
+                    </select><br>
+                    <label for="clan_password_entered">Senha da liga:</label><br>
+                    <input type="password" name="clan_password_entered"><br>
+                    <input type="submit" class="btn" class="margin-left" value="Click Me!">
+                </div>
+                <br>
+                </div>
+            </form>
         </div>
-        <input type="submit" class="btn" class="margin-left" value="Click Me!">
-      
-    </div>
-
-    <div id="entrar-cla" style="display:none;">
-        <label for="id_clan">Escolha um Clã:</label>
-        <select name="id_clan">
-            <?php
-            include("../inc/connection.php"); 
-            $sql = "SELECT * FROM clans";
-            $result = $con->query($sql);
-
-            while ($row = $result->fetch_assoc()) {
-                echo "<option value='" . $row['clan_id'] . "'>" . $row['clan_name'] . "</option>";
-            }
-            $con->close();
-            ?>
-        </select>
-        
-        <label for="clan_password_entered">Senha do Clã:</label>
-        <input type="password" name="clan_password_entered">
-        <input type="submit" class="btn" class="margin-left" value="Click Me!">
-    </div>
-
-    <br>
-
-  
-    </div>
-</form>
-
+    </main>
 </body>
 </html>

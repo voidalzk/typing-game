@@ -1,8 +1,6 @@
 body {
   justify-content: center;
   align-items: center;
-  min-height: 95vh;
-  max-height: 95vh;
   margin: 0;
   background-color: #1e2327
 }
@@ -11,9 +9,13 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
   margin: 0;
   background-color: #1e2327
+}
+
+.menu {
+  width: 100%;
+  background-color: black;
 }
 
 .containerJogo {
@@ -28,11 +30,6 @@ main {
   font-size: 25px;
   color: white;
   position: fixed;
-}
-
-.button {
-  text-align: center;
-  top: 20em;
 }
 
 .quote-display {
@@ -88,7 +85,6 @@ span {
 
 #divButton {
   text-align: center;
-
 }
 
 #divResults {
@@ -100,7 +96,6 @@ span {
 #content {
   text-align: center;
 }
-
 
 #timer_structure {
   text-align: center;
