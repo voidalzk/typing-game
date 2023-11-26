@@ -59,7 +59,8 @@ main {
 }
 
 table {
-    width: 100%;
+    margin: auto;
+    width: 60%;
     border-collapse: collapse;
     margin-top: 20px;
 }
@@ -67,6 +68,5 @@ table {
 th,
 td {
     border: 1px solid #ffffff;
-    /* Cor da borda branca */
     padding: 10px;
 }
