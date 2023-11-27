@@ -1,8 +1,16 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+}
+
 body {
     justify-content: center;
     align-items: center;
     margin: 0;
     background-color: #1e2327;
+    color: white; 
+    text-align: center;
 }
 
 main {
@@ -11,6 +19,8 @@ main {
     align-items: center;
     margin: 0;
     background-color: #1e2327;
+    color: white; 
+    text-align: center;
 }
 
 .menu {
@@ -120,21 +130,6 @@ main {
     color: #ffc107;
 }
 
-.btn {
-    background-color: #ffc107;
-    color: black;
-    font-size: 14px;
-    font-weight: 600;
-    border: none !important;
-    transition: all linear 160ms;
-    cursor: pointer;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-    background-color: #ebf82e;
-}
-
 a {
     margin: 2px;
     text-decoration: none;
@@ -142,4 +137,39 @@ a {
 
 #top {
     text-align: center;
+}
+
+#content-left {
+    width: 130vh;
+    min-height: 92vh;
+    border-right: 1px solid white;
+}
+
+#content-right {
+    width: 80vh;
+}
+
+.headerLiga {
+    display: flex;
+}
+
+.DivsLeft {
+    width: 65vh;
+}
+
+#melhor_guild {
+    align-items: center;
+}
+
+table {
+    margin: auto;
+    width: 60%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ffffff;
+    padding: 10px;
 }

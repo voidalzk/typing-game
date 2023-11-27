@@ -34,6 +34,9 @@ $con->close();
                 </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="hist.php" class="nav-link px-2 text-white">Histórico</a></li>
+                    <li><a href="clans.php" class="nav-link px-2 text-white">Minha liga</a></li>
+                    <li><a href="ger-clans.php" class="nav-link px-2 text-white">Criar/Entrar em ligas</a></li>
                 </ul>
                 <div class="text-end">
                     <a href="logout.php"><button type="button"

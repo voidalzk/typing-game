@@ -21,8 +21,9 @@ $con->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,10 +42,10 @@ $con->close();
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="index.php"
-                            class="nav-link px-2 text-white">Home</a></li>
-                    <li><a href="jogo.php" class="nav-link px-2 text-white">Voltar ao
-                            Jogo</a></li>
+                    <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="hist.php" class="nav-link px-2 text-white">Histórico</a></li>
+                    <li><a href="clans.php" class="nav-link px-2 text-white">Minha liga</a></li>
+                    <li><a href="ger-clans.php" class="nav-link px-2 text-white">Criar/Entrar em ligas</a></li>
                 </ul>
                 <div class="text-end">
                     <a href=""><button type="button" class="btn btn-warning">Logout</button></a>
@@ -53,83 +54,84 @@ $con->close();
         </div>
     </header>
     <main>
-            <h2>Histórico de partidas</h2>
-            <div class="results">
-                <?php
-                    include("../inc/connection.php");
+        <h2>Histórico de partidas</h2>
+        <div class="results">
+            <?php
+            include("../inc/connection.php");
 
-                    if (!isset($_SESSION['user_id'])) {
-                        header("Location: login.php");
-                        exit();
-                    }
+            if (!isset($_SESSION['user_id'])) {
+                header("Location: login.php");
+                exit();
+            }
 
-                    $user_id = $_SESSION['user_id'];
-
-
-                    $currentDate = date("Y-m-d");
-                    $weekStartDate = date("Y-m-d", strtotime('last Monday', strtotime($currentDate)));
-                    $sqlWeeklyScore = "SELECT SUM(points) as weeklyScore FROM historic WHERE user_id = '$user_id' AND date_match >= '$weekStartDate'";
-                    $resultWeeklyScore = $con->query($sqlWeeklyScore);
-                    $weeklyScore = $resultWeeklyScore->fetch_assoc()['weeklyScore'];
+            $user_id = $_SESSION['user_id'];
 
 
-                    $sqlTotalScore = "SELECT SUM(points) as totalScore FROM historic WHERE user_id = '$user_id'";
-                    $resultTotalScore = $con->query($sqlTotalScore);
-                    $totalScore = $resultTotalScore->fetch_assoc()['totalScore'];
+            $currentDate = date("Y-m-d");
+            $weekStartDate = date("Y-m-d", strtotime('last Monday', strtotime($currentDate)));
+            $sqlWeeklyScore = "SELECT SUM(points) as weeklyScore FROM historic WHERE user_id = '$user_id' AND date_match >= '$weekStartDate'";
+            $resultWeeklyScore = $con->query($sqlWeeklyScore);
+            $weeklyScore = $resultWeeklyScore->fetch_assoc()['weeklyScore'];
 
 
-                    $sqlHighestScore = "SELECT MAX(points) as highestScore FROM historic WHERE user_id = '$user_id'";
-                    $resultHighestScore = $con->query($sqlHighestScore);
-                    $highestScore = $resultHighestScore->fetch_assoc()['highestScore'];
-                    echo "<div class='HeaderResults'>";
-                    echo "<h3>Pontuação Semanal: $weeklyScore</h3>";
-                    echo "<h3>Pontuação Total: $totalScore</h3>";
-                    echo "<h3>Maior Pontuação Atiginda: $highestScore</h3></div>";
-                ?>
-                <div class="form">
-                    <form method="post" action="">
-                        <label for="order_by">Ordenar por:</label>
-                        <select name="order_by" id="order_by">
-                            <option value="date_match">Data</option>
-                            <option value="points">Pontuação</option>
-                        </select>
-                        <label for="order_type">Tipo de ordenação:</label>
-                        <select name="order_type" id="order_type">
-                            <option value="desc">Descendente</option>
-                            <option value="asc">Ascendente</option>
-                        </select>
-                        <button type="submit">Ordenar</button>
-                    </form>
-                </div>
-                <?php
-                $sql = "SELECT * FROM historic WHERE user_id = '$user_id'";
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $order_by = $_POST['order_by'];
-                    $order_type = $_POST['order_type'];
-                    $sql = "SELECT * FROM historic WHERE user_id = '$user_id' ORDER BY $order_by $order_type";
-                }
-                $result = $con->query($sql);
+            $sqlTotalScore = "SELECT SUM(points) as totalScore FROM historic WHERE user_id = '$user_id'";
+            $resultTotalScore = $con->query($sqlTotalScore);
+            $totalScore = $resultTotalScore->fetch_assoc()['totalScore'];
 
-                if ($result && $result->num_rows > 0) {
-                    echo "<table>";
-                    echo "<tr><th>Match ID</th><th>Pontos</th><th>Data do Jogo</th></tr>";
-                    
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row['match_id'] . "</td>";
-                        echo "<td>" . $row['points'] . "</td>";
-                        echo "<td>" . $row['date_match'] . "</td>"; 
-                        echo "</tr>";
-                    }
 
-                    echo "</table>";
-                } else {
-                    echo "<p>Nenhum histórico disponível.</p>";
-                }
-
-                $con->close();
+            $sqlHighestScore = "SELECT MAX(points) as highestScore FROM historic WHERE user_id = '$user_id'";
+            $resultHighestScore = $con->query($sqlHighestScore);
+            $highestScore = $resultHighestScore->fetch_assoc()['highestScore'];
+            echo "<div class='HeaderResults'>";
+            echo "<h3>Pontuação Semanal: $weeklyScore</h3>";
+            echo "<h3>Pontuação Total: $totalScore</h3>";
+            echo "<h3>Maior Pontuação Atiginda: $highestScore</h3></div>";
             ?>
+            <div class="form">
+                <form method="post" action="">
+                    <label for="order_by">Ordenar por:</label>
+                    <select name="order_by" id="order_by">
+                        <option value="date_match">Data</option>
+                        <option value="points">Pontuação</option>
+                    </select>
+                    <label for="order_type">Tipo de ordenação:</label>
+                    <select name="order_type" id="order_type">
+                        <option value="desc">Descendente</option>
+                        <option value="asc">Ascendente</option>
+                    </select>
+                    <button type="submit">Ordenar</button>
+                </form>
             </div>
-        </main>
+            <?php
+            $sql = "SELECT * FROM historic WHERE user_id = '$user_id'";
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $order_by = $_POST['order_by'];
+                $order_type = $_POST['order_type'];
+                $sql = "SELECT * FROM historic WHERE user_id = '$user_id' ORDER BY $order_by $order_type";
+            }
+            $result = $con->query($sql);
+
+            if ($result && $result->num_rows > 0) {
+                echo "<table>";
+                echo "<tr><th>Match ID</th><th>Pontos</th><th>Data do Jogo</th></tr>";
+
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row['match_id'] . "</td>";
+                    echo "<td>" . $row['points'] . "</td>";
+                    echo "<td>" . $row['date_match'] . "</td>";
+                    echo "</tr>";
+                }
+
+                echo "</table>";
+            } else {
+                echo "<p>Nenhum histórico disponível.</p>";
+            }
+
+            $con->close();
+            ?>
+        </div>
+    </main>
 </body>
+
 </html>

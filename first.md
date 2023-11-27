@@ -10,21 +10,19 @@
 - **Página do Jogo:** Onde ocorre o jogo de digitação.
 - **Página do Histórico de Partidas:** Mostra o histórico de partidas e pontuações.
 - **Página de Clans:** Permite aos usuários criar ou entrar em Clans.
-- **Página de Quadros de Pontuação:** Exibe pontuações gerais, por liga e semanais.
 
 ### Tecnologias Utilizadas
 
 - **HTML5, CSS3, PHP e JavaScript:** Responsáveis pela estrutura, estilo e funcionalidades das páginas.
-- **Validação de Campos:** Utilização do Javascript para validar os formulários antes de serem enviados para o back-end.
-- **Interação com Back-end:** Uso de AJAX ou Fetch API para comunicação com o back-end.
 
 ## Back-end
 
 ### Tecnologias Utilizadas
 
 - **PHP:** Utilizado para processar e armazenar dados no banco de dados.
-- **Banco de Dados:** MongoDB, banco de dados Cloud.
-- **Sistema de Autenticação:** Implementação de um sistema de registro e login com hashing de senhas.
+- **Banco de Dados:** MySQL
+
+![Exemplo](assets/img/bd.pngbd.png)
 
 ### Estrutura
 
@@ -38,27 +36,22 @@
 
 - index.php (Página inicial)
 - login.php (Página de Login)
-- registro.php (Página de Registro)
+- signup.php (Página de Registro)
 - jogo.php (Página do Jogo)
 - historico.php (Página do Histórico de Partidas)
 - Clans.php (Página de Clans)
-- quadros.php (Página de Quadros de Pontuação)
+- ger-clans.php (Página de Criação de Clans)
 
 /css
-  - style.css (Arquivo CSS)
+  - /public/ (pasta com arquivos CSS)
 
 /js
-  - script.js (Arquivo JavaScript para funcionalidades do front-end)
+  - game.js (Arquivo JavaScript para funcionalidades do front-end)
 
 /inc
   - config.php (Arquivo de configuração do banco de dados)
   - functions.php (Funções PHP úteis)
-
-/auth
   - auth.php (Lógica de autenticação e autorização)
-  
-/game
-  - game_logic.js (Lógica do Jogo em JavaScript)
 
 /backend
   - database.php (Conexão com o banco de dados)
@@ -69,12 +62,7 @@
 
 ### Explicação da Estrutura
 
-- `index.php`, `login.php`, `registro.php`, `jogo.php`, `historico.php`,  Clans.php`, `quadros.php`: Representam as diferentes páginas do sistema.
-- `/css`: Pasta para arquivos CSS, onde `style.css` contém os estilos para o site.
-- `/js`: Pasta para arquivos JavaScript, onde `script.js` gerencia as funcionalidades do front-end.
+- `index.php`, `login.php`, `signup.php`, `jogo.php`, `hist.php`,  clans.php`, `ger-clans.php`: Representam as diferentes páginas do sistema.
+- `/public`: Pasta para arquivos CSS e JS  para o site.
 - `/inc`: Pasta para arquivos de inclusão, como configurações (`config.php`) e funções úteis (`functions.php`).
-- `/auth`: Pasta para arquivos relacionados à autenticação de usuários.
-- `/game`: Pasta para lógica do jogo em JavaScript.
-- `/backend`: Pasta para arquivos de back-end, incluindo a conexão com o banco de dados (`database.php`), operações de usuários (`user_actions.php`), operações do jogo (`game_actions.php`) e operações de Clans (`league_actions.php`).
-
-Esse arquivo README.md serve como uma visão geral da estrutura do projeto e das tecnologias utilizadas no front-end e no back-end.
+- `/views`: Pasta para arquivos das telas.

@@ -4,7 +4,7 @@ session_start();
 
 include("../inc/connection.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {   
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $acao = $_POST["acao"];
 
     if ($acao == "criar") {
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $con->query($sqlUpdateUser);
 
             echo "Clã criado com sucesso!";
-            header("Location: ger-clans.php"); 
+            header("Location: ger-clans.php");
             exit();
         } else {
             echo "Erro ao criar clã: " . $con->error;
@@ -28,21 +28,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($acao == "entrar") {
         $idClanEscolhido = isset($_POST["id_clan"]) ? $_POST["id_clan"] : '';
         $clan_password_entered = isset($_POST["clan_password_entered"]) ? $_POST["clan_password_entered"] : '';
-    
-       
+
+
         $sqlCheckPassword = "SELECT clan_password FROM clans WHERE clan_id = $idClanEscolhido";
         $result = $con->query($sqlCheckPassword);
-    
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $stored_password = $row["clan_password"];
-    
+
             if ($clan_password_entered == $stored_password) {
-                
+
                 $user_id = $_SESSION["user_id"];
                 $sqlUpdateUser = "UPDATE users SET clan_id = $idClanEscolhido WHERE user_id = $user_id";
                 $con->query($sqlUpdateUser);
-    
+
                 echo "Você se juntou a um clã!";
                 header("Location: ger-clans.php");
                 exit();
@@ -56,12 +56,13 @@ $con->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Clãs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../public/ger-clas.css">
+    <link rel="stylesheet" href="../public/ger-clans-style.css">
     <script>
         function toggleFields() {
             var acao = document.getElementById("acao").value;
@@ -77,6 +78,7 @@ $con->close();
         }
     </script>
 </head>
+
 <body>
     <header class="p-3 menu">
         <div class="container">
@@ -93,31 +95,30 @@ $con->close();
                     <li><a href="ger-clans.php" class="nav-link px-2 text-white">Criar/Entrar em ligas</a></li>
                 </ul>
                 <div class="text-end">
-                    <a href="logout.php"><button type="button"
-                            class="btn btn-warning">Logout</button></a>
+                    <a href="logout.php"><button type="button" class="btn btn-warning">Logout</button></a>
                 </div>
             </div>
         </div>
     </header>
     <main>
-        <div class="page"> 
+        <div class="page">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="formLogin" class="formLogin">
                 <h1>Gerenciamento de ligas</h1>
-                <label for="acao" id="texto">Escolha uma ação:</label>                
+                <label for="acao" id="texto">Escolha uma ação:</label>
                 <select name="acao" id="acao" class="margin-left" onchange="toggleFields()">
+                    <option value="nada">---</option>
                     <option value="criar">Criar liga</option>
                     <option value="entrar">Entrar em liga Existente</option>
                 </select>
-                <button type="button" class="btn" class="margin-left">Click Me!</button>
                 <br>
                 <div id="criar-cla" style="display:none;">
-                <div>
-                    <label for="clan_name">Nome da liga:</label><br>
-                    <input type="text" name="clan_name">
+                    <div>
+                        <label for="clan_name">Nome da liga:</label><br>
+                        <input type="text" name="clan_name">
                     </div>
                     <div>
-                    <label for="clan_password">Senha da liga:</label><br>
-                    <input type="password" name="clan_password">
+                        <label for="clan_password">Senha da liga:</label><br>
+                        <input type="password" name="clan_password">
                     </div>
                     <input type="submit" class="btn" class="margin-left" value="Click Me!">
                 </div>
@@ -125,7 +126,7 @@ $con->close();
                     <label for="id_clan">Escolha uma liga:</label><br>
                     <select name="id_clan">
                         <?php
-                        include("../inc/connection.php"); 
+                        include("../inc/connection.php");
                         $sql = "SELECT * FROM clans";
                         $result = $con->query($sql);
                         while ($row = $result->fetch_assoc()) {
@@ -139,9 +140,10 @@ $con->close();
                     <input type="submit" class="btn" class="margin-left" value="Click Me!">
                 </div>
                 <br>
-                </div>
-            </form>
+        </div>
+        </form>
         </div>
     </main>
 </body>
+
 </html>
