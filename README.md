@@ -22,7 +22,7 @@
 - **PHP:** Utilizado para processar e armazenar dados no banco de dados.
 - **Banco de Dados:** MySQL
 
-![Exemplo](assets/img/bd.pngbd.png)
+![Exemplo](assets/img/bd.png)
 
 ### Estrutura
 
