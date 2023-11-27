@@ -11,14 +11,14 @@ const ButtonRestart = document.getElementById('ButtonRestart')
 let seconds = 0;
 let timerInterval;
 let quotepoints = 0;
-let letterspoints = 0
+var letterspoints = 0
 let isGameStarted = false;
 let quoteactual = 0;
 let highScore = 0
 const quoteDisplayElement = document.getElementById('quoteDisplay');
 const quoteInputElement = document.getElementById('quoteInput');
-
-
+const saveResultButton = document.getElementById('saveResultBtn');
+let isResultSaved = false;
 
 button.addEventListener('click', () => {
   divButton.innerHTML = '';
@@ -36,7 +36,9 @@ ButtonRestart.addEventListener('click', () => {
     startGame();
   }
 });
-
+saveResultButton.addEventListener('click', () => {
+  saveResult();
+});
 quoteInputElement.addEventListener('input', () => {
   const arrayQuote = quoteDisplayElement.querySelectorAll('span');
   const arrayValue = quoteInputElement.value.split('');
@@ -71,6 +73,11 @@ function getRandomQuote() {
     .then(data => data.content);
 }
 
+function saveResult() {
+  document.getElementById('scoreInput').value = letterspoints;
+  document.getElementById('scoreForm').submit();
+}
+
 async function renderNewQuote() {
   const quote = await getRandomQuote();
   quoteDisplayElement.innerHTML = '';
@@ -85,9 +92,9 @@ async function renderNewQuote() {
 let startTime;
 
 function startGame() {
-
   isGameStarted = true;
   seconds = 0;
+  letterspoints = 0
   renderNewQuote();
   startTimer();
 }
@@ -122,8 +129,6 @@ function startTimer() {
       PgameResult.innerHTML = `${letterspoints}`;
       PhighScore.innerHTML = `${highScore}`;
       isGameStarted = false;
-      letterspoints = 0;
-
     }
   }, 1000);
 }

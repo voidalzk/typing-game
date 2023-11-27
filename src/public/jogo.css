@@ -10,7 +10,8 @@ main {
   justify-content: center;
   align-items: center;
   margin: 0;
-  background-color: #1e2327
+  background-color: #1e2327;
+  height: 90vh;
 }
 
 .menu {

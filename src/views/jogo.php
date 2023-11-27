@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+include("../inc/connection.php");
+$user_id = $_SESSION["user_id"];
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["points"])) {
+    $points = $_POST["points"];
+    $date_match = date("Y-m-d H:i:s");
+    $sql = "INSERT INTO HISTORIC (USER_ID, POINTS) VALUES ('$user_id', '$points')";
+    $con->query($sql);
+}
+$con->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,10 +64,13 @@
           <h3>Pontos da partida:</h3>
           <h4 id="matchResult"></h4>
           <h3>Maior resultado:</h3>
-          <h3 id="highScore">
-            </h4>
+          <h4 id="highScore"></h4>
             <button id="ButtonRestart" type="button" class="btn btn-warning btn-lg" style="font-size: 50px;"> Jogar
-              novamente</button>
+              novamente</button><br><br>
+            <button id="saveResultBtn" type="button" class="btn btn-warning btn-lg" style="font-size: 50px;">Salvar Resultado</button>
+            <form id="scoreForm" method="post" action="jogo.php">
+              <input type="hidden" id="scoreInput" name="points" value="" class="btn btn-warning btn-lg">
+            </form>
         </div>
       </div>
     </div>
