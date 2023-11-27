@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $con->query($sqlUpdateUser);
 
             echo "Clã criado com sucesso!";
-            header("Location: ger-clas.php"); 
+            header("Location: ger-clans.php"); 
             exit();
         } else {
             echo "Erro ao criar clã: " . $con->error;

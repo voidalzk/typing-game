@@ -2,7 +2,7 @@
 
 $dbhost = "localhost";
 $dbuser = "root";
-$dbpass = "root";
+$dbpass = "";
 $dbname = "trabalhoweb1";
 
 if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))

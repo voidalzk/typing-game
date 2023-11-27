@@ -48,7 +48,6 @@ $con->close();
 <h2>Histórico do Usuário</h2>
 
 <?php
-
 include("../inc/connection.php");
 
 if (!isset($_SESSION['user_id'])) {
@@ -57,6 +56,27 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+
+
+$currentDate = date("Y-m-d");
+$weekStartDate = date("Y-m-d", strtotime('last Monday', strtotime($currentDate)));
+$sqlWeeklyScore = "SELECT SUM(points) as weeklyScore FROM historic WHERE user_id = '$user_id' AND date_match >= '$weekStartDate'";
+$resultWeeklyScore = $con->query($sqlWeeklyScore);
+$weeklyScore = $resultWeeklyScore->fetch_assoc()['weeklyScore'];
+
+
+$sqlTotalScore = "SELECT SUM(points) as totalScore FROM historic WHERE user_id = '$user_id'";
+$resultTotalScore = $con->query($sqlTotalScore);
+$totalScore = $resultTotalScore->fetch_assoc()['totalScore'];
+
+
+$sqlHighestScore = "SELECT MAX(points) as highestScore FROM historic WHERE user_id = '$user_id'";
+$resultHighestScore = $con->query($sqlHighestScore);
+$highestScore = $resultHighestScore->fetch_assoc()['highestScore'];
+
+echo "<p>Pontuação Semanal: $weeklyScore</p>";
+echo "<p>Pontuação Total: $totalScore</p>";
+echo "<p>Maior Pontuação Atiginda: $highestScore</p>";
 
 $sql = "SELECT * FROM historic WHERE user_id = '$user_id'";
 $result = $con->query($sql);

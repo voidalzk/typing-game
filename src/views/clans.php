@@ -12,13 +12,22 @@ $sqlClanMembers = "SELECT u.username, COALESCE(SUM(h.points), 0) as total_points
                    FROM Users u 
                    LEFT JOIN historic h ON u.user_id = h.user_id 
                    WHERE u.clan_id = (SELECT clan_id FROM Users WHERE user_id = $user_id)
-                   GROUP BY u.user_id";
+                   GROUP BY u.user_id
+                   ORDER BY total_points DESC";
 $resultClanMembers = $con->query($sqlClanMembers);
+
+$sqlTotalClanPoints = "SELECT COALESCE(SUM(h.points), 0) as total_clan_points 
+                       FROM Users u 
+                       LEFT JOIN historic h ON u.user_id = h.user_id 
+                       WHERE u.clan_id = (SELECT clan_id FROM Users WHERE user_id = $user_id)";
+$resultTotalClanPoints = $con->query($sqlTotalClanPoints);
+$totalClanPoints = $resultTotalClanPoints->fetch_assoc()['total_clan_points'];
+
 
 $sqlClanWeeklyPoints = "SELECT COALESCE(SUM(points), 0) as weekly_points 
                         FROM historic 
                         WHERE user_id IN (SELECT user_id FROM Users WHERE clan_id = (SELECT clan_id FROM Users WHERE user_id = $user_id))
-                        AND date_match >= NOW() - INTERVAL 7 DAY"; // Substitua 'date_match' pelo nome correto da coluna que armazena a data
+                        AND date_match >= NOW() - INTERVAL 7 DAY"; 
 $resultClanWeeklyPoints = $con->query($sqlClanWeeklyPoints);
 $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
 ?>
@@ -75,36 +84,38 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
                         ?> 
                 </div>
                 <div id="pontuacao-semanal" class="DivsLeft">
-                    <h1>Pontuação Semanal do Clã</h1>
+                    <h1>Pontuação Semanal da Liga</h1>
                     <p>Pontuação Total Semanal: <?php echo $weeklyPoints; ?></p>
                 </div>    
             </div>
             <div id="melhor_guild">
-                <h1>Membros da Liga</h1>
-                <table>
-                <tr>
-                    <th>Username</th>
-                    <th>Pontuação</th>
-                </tr>
-                <?php
-                    if ($resultClanMembers->num_rows > 0) {
-                        while ($rowClanMembers = $resultClanMembers->fetch_assoc()) {
-                            $username = $rowClanMembers['username'];
-                            $totalPoints = $rowClanMembers['total_points'];
-                            echo "<tr>";
-                            echo "<td>$username</td>";
-                            echo "<td>Pontuação Acumulativa: $totalPoints</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='2'>Nenhum membro no clã</td></tr>";
-                    }
-                ?>
-                </table>
-            </div>
+    <h1>Membros da Liga</h1>
+    <p>Total Pontuação da Liga: <?php echo $totalClanPoints; ?></p> 
+
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Pontuação</th>
+        </tr>
+        <?php
+        if ($resultClanMembers->num_rows > 0) {
+            while ($rowClanMembers = $resultClanMembers->fetch_assoc()) {
+                $username = $rowClanMembers['username'];
+                $totalPoints = $rowClanMembers['total_points'];
+                echo "<tr>";
+                echo "<td>$username</td>";
+                echo "<td>Pontuação Acumulativa: $totalPoints</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='2'>Nenhum membro no clã</td></tr>";
+        }
+        ?>
+    </table>
+</div>
         </div>
         <div id="content-right">
-            <div id="Others">
+        <div id="Others">
                     <h1>Ligas existentes </h1>
                     <ul>
                     <?php
@@ -112,7 +123,7 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
                         $resultOtherGuilds = $con->query($sqlOtherGuilds);
 
                         while ($rowOtherGuilds = $resultOtherGuilds->fetch_assoc()) {
-                            echo "<td>{$rowOtherGuilds['clan_name']}</td>";
+                            echo "<td>{$rowOtherGuilds['clan_name']}</td>\n\n";
                         }
                     ?>
                     </ul>
