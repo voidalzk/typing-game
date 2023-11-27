@@ -63,7 +63,7 @@ $con->close();
         <div class="pointsResult" id="pointsResult">
           <h3>Pontos da partida:</h3>
           <h4 id="matchResult"></h4>
-          <h3>Maior resultado:</h3>
+          <h3>Maior resultado dessa sessão:</h3>
           <h4 id="highScore"></h4>
             <button id="ButtonRestart" type="button" class="btn btn-warning btn-lg" style="font-size: 50px;"> Jogar
               novamente</button><br><br>

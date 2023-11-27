@@ -43,7 +43,6 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/clans.css">
     <title>Ligas</title>
-
 </head>
 
 <body>
@@ -117,16 +116,21 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
         <div id="content-right">
         <div id="Others">
                     <h1>Ligas existentes </h1>
-                    <ul>
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                        </tr>
                     <?php
                         $sqlOtherGuilds = "SELECT clan_name FROM Clans";
                         $resultOtherGuilds = $con->query($sqlOtherGuilds);
 
                         while ($rowOtherGuilds = $resultOtherGuilds->fetch_assoc()) {
+                            echo "<tr>";
                             echo "<td>{$rowOtherGuilds['clan_name']}</td>\n\n";
+                            echo "<tr>";
                         }
                     ?>
-                    </ul>
+                    </table>
                 </div>
             </div>
         </div>
