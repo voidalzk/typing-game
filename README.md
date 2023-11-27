@@ -53,12 +53,6 @@
   - functions.php (Funções PHP úteis)
   - auth.php (Lógica de autenticação e autorização)
 
-/backend
-  - database.php (Conexão com o banco de dados)
-  - user_actions.php (Operações de usuários: registro, login)
-  - game_actions.php (Operações do jogo: pontuação, histórico)
-  - league_actions.php (Operações de Clans)
-
 
 ### Explicação da Estrutura
 
