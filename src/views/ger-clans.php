@@ -120,7 +120,7 @@ $con->close();
                         <label for="clan_password">Senha da liga:</label><br>
                         <input type="password" name="clan_password">
                     </div>
-                    <input type="submit" class="btn" class="margin-left" value="Click Me!">
+                    <input type="submit" class="btn" class="margin-left" value="Criar">
                 </div>
                 <div id="entrar-cla" style="display:none;">
                     <label for="id_clan">Escolha uma liga:</label><br>
@@ -137,7 +137,7 @@ $con->close();
                     </select><br>
                     <label for="clan_password_entered">Senha da liga:</label><br>
                     <input type="password" name="clan_password_entered"><br>
-                    <input type="submit" class="btn" class="margin-left" value="Click Me!">
+                    <input type="submit" class="btn" class="margin-left" value="Entrar">
                 </div>
                 <br>
         </div>
