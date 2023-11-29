@@ -62,7 +62,7 @@ $weeklyPoints = $resultClanWeeklyPoints->fetch_assoc()['weekly_points'];
                     <li><a href="ger-clans.php" class="nav-link px-2 text-white">Criar/Entrar em ligas</a></li>
                 </ul>
                 <div class="text-end">
-                    <a href=""><button type="button" class="btn btn-warning">Logout</button></a>
+                    <a href="logout.php"><button type="button" class="btn btn-warning">Logout</button></a>
                 </div>
             </div>
         </div>
