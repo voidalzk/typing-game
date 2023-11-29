@@ -1,8 +1,8 @@
-Feito por:
-Bruno Brugnerotto de Lara GRR20230933
-Gabriel Francelino Voidaleski GRR20234966
-João Pedro Guerios GRR20234965
-Pedro Henrique GRR20230960
+- Feito por:
+- Bruno Brugnerotto de Lara GRR20230933
+- Gabriel Francelino Voidaleski GRR20234966
+- João Pedro Guerios GRR20234965
+- Pedro Henrique GRR20230960
 
 # typing-game
 # Sistema de Jogo de Digitação - README
