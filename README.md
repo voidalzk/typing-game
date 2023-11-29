@@ -40,7 +40,7 @@
 - signup.php (Página de Registro)
 - jogo.php (Página do Jogo)
 - historico.php (Página do Histórico de Partidas)
-- Clans.php (Página de Clans)
+- clans.php (Página de Clans)
 - ger-clans.php (Página de Criação de Clans)
 
 /public
