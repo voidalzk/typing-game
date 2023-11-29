@@ -109,7 +109,7 @@ function startTimer() {
         timerElement.style.color = 'white';
       }
     }
-    if (seconds === 5) {
+    if (seconds === 60) {
       clearInterval(timerInterval);
       containergame.style.display = 'none';
       timerElement.innerText = '';
