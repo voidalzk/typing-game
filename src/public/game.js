@@ -36,9 +36,7 @@ ButtonRestart.addEventListener('click', () => {
     startGame();
   }
 });
-saveResultButton.addEventListener('click', () => {
-  saveResult();
-});
+
 quoteInputElement.addEventListener('input', () => {
   const arrayQuote = quoteDisplayElement.querySelectorAll('span');
   const arrayValue = quoteInputElement.value.split('');
@@ -71,11 +69,6 @@ function getRandomQuote() {
   return fetch(RANDOM_QUOTE_API_URL)
     .then(response => response.json())
     .then(data => data.content);
-}
-
-function saveResult() {
-  document.getElementById('scoreInput').value = letterspoints;
-  document.getElementById('scoreForm').submit();
 }
 
 async function renderNewQuote() {
@@ -116,7 +109,7 @@ function startTimer() {
         timerElement.style.color = 'white';
       }
     }
-    if (seconds === 60) {
+    if (seconds === 5) {
       clearInterval(timerInterval);
       containergame.style.display = 'none';
       timerElement.innerText = '';
@@ -127,7 +120,16 @@ function startTimer() {
       }
       DivResults.style.display = "block";
       PgameResult.innerHTML = `${letterspoints}`;
-      PhighScore.innerHTML = `${highScore}`;
+      $.ajax({
+        type: "POST",
+        url: "../views/jogo.php",
+        data: {
+          letterspoints: letterspoints
+        },
+        success: function (response) {
+
+        }
+      });
       isGameStarted = false;
     }
   }, 1000);

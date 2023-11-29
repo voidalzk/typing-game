@@ -3,12 +3,14 @@
 session_start();
 include("../inc/connection.php");
 $user_id = $_SESSION["user_id"];
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["points"])) {
-    $points = $_POST["points"];
-    $date_match = date("Y-m-d H:i:s");
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["letterspoints"])) {
+    $points = $_POST["letterspoints"];
     $sql = "INSERT INTO HISTORIC (USER_ID, POINTS) VALUES ('$user_id', '$points')";
     $con->query($sql);
 }
+$sqlHighestScore = "SELECT MAX(points) as highestScore FROM historic WHERE user_id = '$user_id'";
+$resultHighestScore = $con->query($sqlHighestScore);
+$highestScore = $resultHighestScore->fetch_assoc()['highestScore']; 
 $con->close();
 ?>
 
@@ -66,19 +68,16 @@ $con->close();
         <div class="pointsResult" id="pointsResult">
           <h3>Pontos da partida:</h3>
           <h4 id="matchResult"></h4>
-          <h3>Maior resultado dessa sessão:</h3>
-          <h4 id="highScore"></h4>
+          <h3>Recorde</h3>
+          <h4 id="highScore"><?php echo $highestScore;?></h4>
             <button id="ButtonRestart" type="button" class="btn btn-warning btn-lg" style="font-size: 50px;"> Jogar
               novamente</button><br><br>
-            <button id="saveResultBtn" type="button" class="btn btn-warning btn-lg" style="font-size: 50px;">Salvar Resultado</button>
-            <form id="scoreForm" method="post" action="jogo.php">
-              <input type="hidden" id="scoreInput" name="points" value="" class="btn btn-warning btn-lg">
-            </form>
         </div>
       </div>
     </div>
   </main>
-  <script src="..\public\jogo.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="..\public\game.js" defer></script>
 </body>
 
 </html>
