@@ -9,7 +9,8 @@
 - **Página Principal:** Após o login, exibe opções para jogar, ver o histórico de partidas e acessar quadros de pontuação.
 - **Página do Jogo:** Onde ocorre o jogo de digitação.
 - **Página do Histórico de Partidas:** Mostra o histórico de partidas e pontuações.
-- **Página de Clans:** Permite aos usuários criar ou entrar em Clans.
+- **Página de Clans:** Permite aos usuários visualizar seu clan, pontuações semanais e mais.
+- **Página de Criar/entrar em Clans:** Permite aos usuários criar ou entrar em Clans.
 
 ### Tecnologias Utilizadas
 
@@ -39,14 +40,13 @@
 - signup.php (Página de Registro)
 - jogo.php (Página do Jogo)
 - historico.php (Página do Histórico de Partidas)
-- Clans.php (Página de Clans)
+- clans.php (Página de Clans)
 - ger-clans.php (Página de Criação de Clans)
 
-/css
-  - /public/ (pasta com arquivos CSS)
-
-/js
+/public
+  - public/ (pasta com arquivos CSS)
   - game.js (Arquivo JavaScript para funcionalidades do jogo)
+  - signup.js (Arquivo JavaScript para autentificação do usuário)
 
 /inc
   - config.php (Arquivo de configuração do banco de dados)
