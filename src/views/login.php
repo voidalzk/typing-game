@@ -1,7 +1,7 @@
 <?php 
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = "root";
 	$conn = new mysqli($servername, $username, $password);
 	
 	if ($conn->connect_error) {
@@ -14,7 +14,6 @@
 	
 	if ($result) {
 		if ($result->num_rows > 0) {
-			echo "O banco de dados '$databaseName' existe!<br>";
 			$conn->select_db($databaseName);
 			//---------------------------------------------------
 			$tableQueryclans = "SHOW TABLES LIKE 'clans'";
@@ -29,12 +28,9 @@
 					);
 				";
 				if ($conn->query($createTableQueryclans) === TRUE) {
-					echo "A tabela 'clans' foi criada com sucesso!<br>";
 				} else {
-					echo "Erro ao criar a tabela 'clans': " . $conn->error . "<br>";
 				}
 			} else {
-				echo "A tabela 'clans' já existe.<br>";
 			}
 			//-------------------------------------------------
 			$tableQueryusers = "SHOW TABLES LIKE 'users'";
@@ -52,12 +48,9 @@
 					);
 				";
 				if ($conn->query($createTableQueryusers) === TRUE) {
-					echo "A tabela 'user' foi criada com sucesso!<br>";
 				} else {
-					echo "Erro ao criar a tabela 'users': " . $conn->error . "<br>";
 				}
 			} else {
-				echo "A tabela 'users' já existe.<br>";
 			}
 			//-----------------------------------------------
 			$tableQueryhistoric = "SHOW TABLES LIKE 'historic'";
@@ -74,18 +67,14 @@
 					);
 				";
 				if ($conn->query($createTableQueryhistoric) === TRUE) {
-					echo "A tabela 'historic' foi criada com sucesso!<br>";
 				} else {
-					echo "Erro ao criar a tabela 'historic': " . $conn->error . "<br>";
 				}
 			} else {
-				echo "A tabela 'historic' já existe.<br>";
 			}
 			//-----------------------------------------------
 		} else {
 			$createDatabaseQuery = "CREATE DATABASE $databaseName";
 			if ($conn->query($createDatabaseQuery) === TRUE) {
-				echo "O banco de dados '$databaseName' foi criado com sucesso!<br>";
 				$conn->select_db($databaseName);
 				//-------------------------------------
 				$createTableQueryclans = "
@@ -97,9 +86,7 @@
 					);
 				";
 				if ($conn->query($createTableQueryclans) === TRUE) {
-					echo "A tabela 'clans' foi criada com sucesso!<br>";
 				} else {
-					echo "Erro ao criar a tabela 'clans': " . $conn->error . "<br>";
 				}
 				//-------------------------------------------------
 				$createTableQueryusers = "
@@ -114,9 +101,7 @@
 					);
 				";
 				if ($conn->query($createTableQueryusers) === TRUE) {
-					echo "A tabela 'user' foi criada com sucesso!<br>";
 				} else {
-					echo "Erro ao criar a tabela 'users': " . $conn->error . "<br>";
 				}
 				//---------------------------------------------
 				$createTableQueryhistoric = "
@@ -130,17 +115,13 @@
 					);
 				";
 				if ($conn->query($createTableQueryhistoric) === TRUE) {
-					echo "A tabela 'historic' foi criada com sucesso!<br>";
 				} else {
-					echo "Erro ao criar a tabela 'historic': " . $conn->error . "<br>";
 				}
 				//--------------------------------------------
 			} else {
-				echo "Erro ao criar o banco de dados '$databaseName': " . $conn->error . "<br>";
 			}
 		}
 	} else {
-		echo "Erro ao executar a consulta: " . $conn->error . "<br>";
 	}
 	
 	$conn->close();
