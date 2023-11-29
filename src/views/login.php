@@ -28,13 +28,7 @@
 						PRIMARY KEY (clan_id)
 					);
 				";
-				if ($conn->query($createTableQueryclans) === TRUE) {
-					
-				} else {
-					
-				}
-			} else {
-				
+				$conn->query($createTableQueryclans);
 			}
 			//-------------------------------------------------
 			$tableQueryusers = "SHOW TABLES LIKE 'users'";
@@ -51,14 +45,8 @@
 						CONSTRAINT FKUSERCLAN FOREIGN KEY (clan_id) REFERENCES clans(clan_id)
 					);
 				";
-				if ($conn->query($createTableQueryusers) === TRUE) {
-					
-				} else {
-					
-				}
-			} else {
-				
-			}
+				$conn->query($createTableQueryusers);
+			} 
 			//-----------------------------------------------
 			$tableQueryhistoric = "SHOW TABLES LIKE 'historic'";
 			$tableResult = $conn->query($tableQueryhistoric);
@@ -73,14 +61,8 @@
 						CONSTRAINT FKHISTORICUSER FOREIGN KEY (user_id) REFERENCES users(user_id)
 					);
 				";
-				if ($conn->query($createTableQueryhistoric) === TRUE) {
-					
-				} else {
-					
-				}
-			} else {
-				
-			}
+				$conn->query($createTableQueryhistoric) ;
+			} 
 			//-----------------------------------------------
 		} else {
 			$createDatabaseQuery = "CREATE DATABASE $databaseName";
@@ -96,11 +78,7 @@
 						PRIMARY KEY (clan_id)
 					);
 				";
-				if ($conn->query($createTableQueryclans) === TRUE) {
-					
-				} else {
-					
-				}
+				$conn->query($createTableQueryclans);
 				//-------------------------------------------------
 				$createTableQueryusers = "
 					CREATE TABLE users(
@@ -113,11 +91,7 @@
 						CONSTRAINT FKUSERCLAN FOREIGN KEY (clan_id) REFERENCES clans(clan_id)
 					);
 				";
-				if ($conn->query($createTableQueryusers) === TRUE) {
-					
-				} else {
-					
-				}
+				$conn->query($createTableQueryusers);
 				//---------------------------------------------
 				$createTableQueryhistoric = "
 					CREATE TABLE historic (
@@ -129,18 +103,10 @@
 						CONSTRAINT FKHISTORICUSER FOREIGN KEY (user_id) REFERENCES users(user_id)
 					);
 				";
-				if ($conn->query($createTableQueryhistoric) === TRUE) {
-					
-				} else {
-					
-				}
+				$conn->query($createTableQueryhistoric);
 				//--------------------------------------------
-			} else {
-				
-			}
+			} 
 		}
-	} else {
-		
 	}
 	
 	$conn->close();
