@@ -46,7 +46,7 @@
   - /public/ (pasta com arquivos CSS)
 
 /js
-  - game.js (Arquivo JavaScript para funcionalidades do front-end)
+  - game.js (Arquivo JavaScript para funcionalidades do jogo)
 
 /inc
   - config.php (Arquivo de configuração do banco de dados)
@@ -56,7 +56,7 @@
 
 ### Explicação da Estrutura
 
-- `index.php`, `login.php`, `signup.php`, `jogo.php`, `hist.php`,  clans.php`, `ger-clans.php`: Representam as diferentes páginas do sistema.
+- `index.php`, `login.php`, `signup.php`, `jogo.php`, `hist.php`,  `clans.php`, `ger-clans.php`: Representam as diferentes páginas do sistema.
 - `/public`: Pasta para arquivos CSS e JS  para o site.
 - `/inc`: Pasta para arquivos de inclusão, como configurações (`config.php`) e funções úteis (`functions.php`).
 - `/views`: Pasta para arquivos das telas.
