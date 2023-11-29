@@ -8,7 +8,7 @@
 		die("Conexão falhou: " . $conn->connect_error);
 	}
 	
-	$databaseName = "trabalhoweb";
+	$databaseName = "trabalhoweb2";
 	$query = "SHOW DATABASES LIKE '$databaseName'";
 	$result = $conn->query($query);
 	
