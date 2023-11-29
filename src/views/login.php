@@ -148,6 +148,8 @@
 
 	include("../inc/connection.php");
 	include("../inc/functions.php");
+	include("../inc/auth.php");
+
 	
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
@@ -178,10 +180,7 @@
 				}
 			}
 			
-			echo "senha ou username errado(s)";
-		}else
-		{
-			echo "senha ou username errado(s)";
+			
 		}
 	}
 
@@ -225,8 +224,19 @@
 				<p>Digite os seus dados de acesso nos campos abaixo.</p>
 				<label for="username">Login</label>
 				<input id="text" type="text" name="username" autofocus="true">
+				<?php 
+					if (!empty($err_username)) {
+						echo "<p id='error'>" .$err_username . "</p>";
+					}
+				?>
+
 				<label for="password">Senha</label>
 				<input id="text" type="password" name="password" autofocus="true">
+				<?php 
+					if (!empty($err_password)) {
+						echo "<p id='error'>" . $err_password . "</p>";
+					}
+				?>
 
 				<input id="button" type="submit" value="Logar" class="btn">
 
